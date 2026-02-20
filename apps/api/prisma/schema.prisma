@@ -1,0 +1,166 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CLIENT
+  ADMIN
+}
+
+enum PropertyType {
+  HOTEL
+  VILA
+  PENSIUNE
+  CABANA
+  APARTAMENT
+  CAMERA
+  CASA_VACANTA
+}
+
+enum PropertyStatus {
+  DRAFT
+  PENDING
+  APPROVED
+}
+
+enum ServiceCategory {
+  ATV
+  SNOWMOBILE
+  HORSEBACK_RIDING
+  HIKING
+  SKIING
+  BICYCLE_RENTAL
+  RAFTING
+  TAXI_LOCAL
+  RENT_A_CAR
+  FOTOGRAF
+  INSTALATOR
+  ELECTRICIAN
+  TRANSPORT_MARFA
+  DESZAPEZIRE
+  MASAJ
+  INSTRUCTOR_FITNESS
+  DJ
+  MUZICA_LIVE
+  CATERING
+  OTHER
+}
+
+enum PriceRange {
+  BUDGET
+  MODERATE
+  PREMIUM
+}
+
+model User {
+  id                String       @id @default(cuid())
+  email             String       @unique
+  passwordHash      String
+  role              Role         @default(CLIENT)
+  emailConfirmed    Boolean      @default(false)
+  emailConfirmToken String?
+  firstName         String?
+  lastName          String?
+  phone             String?
+  properties        Property[]
+  services          Service[]
+  restaurants       Restaurant[]
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+}
+
+model TouristAttraction {
+  id                String   @id @default(cuid())
+  titleRo           String
+  titleEn           String
+  descriptionRo     String
+  descriptionEn     String
+  latitude          Float
+  longitude         Float
+  images            String[]
+  isLocationOfMonth Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Property {
+  id             String         @id @default(cuid())
+  type           PropertyType
+  titleRo        String
+  titleEn        String
+  descriptionRo  String
+  descriptionEn  String
+  address        String?
+  latitude       Float
+  longitude      Float
+  pricePerNight  Float
+  images         String[]
+  ownerId        String
+  owner          User           @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  status         PropertyStatus @default(PENDING)
+  amenities      String[]
+  maxGuests      Int            @default(2)
+  rooms          Int            @default(1)
+  promotionOrder  Int?
+  isLocationOfMonth Boolean      @default(false)
+  isActive       Boolean        @default(true)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+}
+
+model Service {
+  id            String          @id @default(cuid())
+  category      ServiceCategory
+  titleRo       String
+  titleEn       String
+  descriptionRo String
+  descriptionEn String
+  images        String[]
+  phone         String?
+  email         String?
+  website       String?
+  address       String?
+  priceInfo     String?
+  latitude      Float?
+  longitude     Float?
+  ownerId       String
+  owner         User            @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  status            PropertyStatus  @default(PENDING)
+  promotionOrder    Int?
+  isLocationOfMonth Boolean         @default(false)
+  isActive          Boolean         @default(true)
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+}
+
+model Restaurant {
+  id            String         @id @default(cuid())
+  titleRo       String
+  titleEn       String
+  descriptionRo String
+  descriptionEn String
+  cuisineRo     String?
+  cuisineEn     String?
+  images        String[]
+  phone         String?
+  email         String?
+  website       String?
+  address       String?
+  priceRange    PriceRange     @default(MODERATE)
+  openingHours  String?
+  latitude      Float?
+  longitude     Float?
+  ownerId       String
+  owner         User           @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  status            PropertyStatus @default(PENDING)
+  promotionOrder    Int?
+  isLocationOfMonth Boolean        @default(false)
+  isActive          Boolean        @default(true)
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+}
