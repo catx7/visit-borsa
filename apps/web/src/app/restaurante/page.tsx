@@ -102,7 +102,7 @@ export default function RestaurantePage() {
             ))}
           </div>
         ) : isError ? (
-          <p className="text-center text-muted-foreground py-12">{t('common.error')}</p>
+          <p className="text-center text-muted-foreground py-12">{t('restaurants.noResults')}</p>
         ) : data && data.data.length > 0 ? (
           <>
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
