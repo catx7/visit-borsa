@@ -18,7 +18,7 @@ COPY apps/api/ apps/api/
 COPY packages/shared/ packages/shared/
 
 # Build NestJS
-RUN cd apps/api && pnpm build
+RUN pnpm --filter @pensiuni/api build && ls -la apps/api/dist/main.js
 
 WORKDIR /app/apps/api
 
