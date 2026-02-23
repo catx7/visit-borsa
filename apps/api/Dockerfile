@@ -17,17 +17,8 @@ RUN pnpm install --frozen-lockfile
 COPY apps/api/ apps/api/
 COPY packages/shared/ packages/shared/
 
-# Build NestJS app — debug output to diagnose build failures
-RUN cd apps/api && \
-    echo "=== nest-cli.json ===" && cat nest-cli.json && \
-    echo "=== tsconfig.build.json ===" && cat tsconfig.build.json && \
-    echo "=== Running nest build ===" && \
-    npx nest build 2>&1; \
-    BUILD_EXIT=$?; \
-    echo "=== nest build exit code: $BUILD_EXIT ===" && \
-    echo "=== dist/ contents ===" && \
-    ls -laR dist/ 2>&1 || echo "dist/ does not exist" && \
-    test -f dist/main.js
+# Build NestJS app (prisma/ excluded in tsconfig.build.json → output goes to dist/main.js)
+RUN cd apps/api && npx nest build
 
 WORKDIR /app/apps/api
 
