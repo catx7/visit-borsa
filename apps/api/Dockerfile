@@ -17,8 +17,8 @@ RUN pnpm install --frozen-lockfile
 COPY apps/api/ apps/api/
 COPY packages/shared/ packages/shared/
 
-# Build NestJS
-RUN pnpm --filter @pensiuni/api build && ls -la apps/api/dist/main.js
+# Build NestJS (use tsc directly instead of nest CLI)
+RUN cd apps/api && npx tsc -p tsconfig.build.json && ls -la dist/main.js
 
 WORKDIR /app/apps/api
 
