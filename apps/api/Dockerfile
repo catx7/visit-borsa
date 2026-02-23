@@ -11,7 +11,7 @@ COPY apps/api/prisma/schema.prisma apps/api/prisma/
 COPY packages/shared/package.json packages/shared/
 
 # Install dependencies (postinstall runs prisma generate)
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile --shamefully-hoist
 
 # Copy source
 COPY apps/api/ apps/api/
