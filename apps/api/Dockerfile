@@ -4,20 +4,21 @@ RUN corepack enable && corepack prepare pnpm@9.15.4 --activate
 
 WORKDIR /app
 
-# Copy workspace config
+# Copy workspace config + prisma schema (needed by postinstall)
 COPY package.json pnpm-workspace.yaml pnpm-lock.yaml turbo.json ./
 COPY apps/api/package.json apps/api/
+COPY apps/api/prisma/schema.prisma apps/api/prisma/
 COPY packages/shared/package.json packages/shared/
 
-# Install dependencies
+# Install dependencies (postinstall runs prisma generate)
 RUN pnpm install --frozen-lockfile
 
 # Copy source
 COPY apps/api/ apps/api/
 COPY packages/shared/ packages/shared/
 
-# Generate Prisma client and build
-RUN cd apps/api && npx prisma generate && pnpm build
+# Build
+RUN cd apps/api && pnpm build
 
 # Production
 FROM node:20-slim AS production
