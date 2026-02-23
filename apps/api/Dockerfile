@@ -1,4 +1,4 @@
-FROM node:20-slim AS base
+FROM node:20-slim
 RUN apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 RUN corepack enable && corepack prepare pnpm@9.15.4 --activate
 
@@ -17,20 +17,8 @@ RUN pnpm install --frozen-lockfile
 COPY apps/api/ apps/api/
 COPY packages/shared/ packages/shared/
 
-# Build
+# Build NestJS
 RUN cd apps/api && pnpm build
-
-# Production
-FROM node:20-slim AS production
-RUN apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /app
-
-COPY --from=base /app/node_modules ./node_modules
-COPY --from=base /app/apps/api/node_modules ./apps/api/node_modules
-COPY --from=base /app/apps/api/dist ./apps/api/dist
-COPY --from=base /app/apps/api/prisma ./apps/api/prisma
-COPY --from=base /app/apps/api/package.json ./apps/api/
 
 WORKDIR /app/apps/api
 
