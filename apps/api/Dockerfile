@@ -17,11 +17,8 @@ RUN pnpm install --frozen-lockfile
 COPY apps/api/ apps/api/
 COPY packages/shared/ packages/shared/
 
-# Debug: verify source files exist, then build
-RUN ls apps/api/src/main.ts && \
-    cd apps/api && \
-    npx tsc -p tsconfig.build.json --listEmittedFiles 2>&1 && \
-    ls -la dist/ || echo "dist/ not created"
+# Build NestJS app (nest build uses nest-cli.json → sourceRoot: "src" → dist/main.js)
+RUN cd apps/api && npx nest build && ls dist/main.js
 
 WORKDIR /app/apps/api
 
