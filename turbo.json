@@ -7,7 +7,8 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "dist/**"]
+      "outputs": [".next/**", "dist/**"],
+      "env": ["API_URL", "DATABASE_URL", "JWT_SECRET", "JWT_EXPIRATION", "CLOUDINARY_CLOUD_NAME", "CLOUDINARY_API_KEY", "CLOUDINARY_API_SECRET", "RECAPTCHA_SECRET_KEY", "NEXT_PUBLIC_*"]
     },
     "lint": {
       "dependsOn": ["^build"]
