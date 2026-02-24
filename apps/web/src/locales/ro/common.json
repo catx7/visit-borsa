@@ -323,7 +323,8 @@
       "pendingServices": "Servicii în așteptare",
       "totalRestaurants": "Total restaurante",
       "pendingRestaurants": "Restaurante în așteptare",
-      "totalAttractions": "Total obiective"
+      "totalAttractions": "Total obiective",
+      "totalContactClicks": "Click-uri contact"
     },
     "approve": "Aprobă",
     "reject": "Respinge",

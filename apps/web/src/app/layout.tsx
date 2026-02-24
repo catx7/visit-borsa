@@ -8,9 +8,38 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'VisitBorsa — Descoperă Borșa, Maramureș',
+  metadataBase: new URL('https://visitborsa.ro'),
+  title: {
+    default: 'VisitBorsa — Cazare Borșa, Maramureș | Pensiuni, Hoteluri, Restaurante',
+    template: '%s | VisitBorsa',
+  },
   description:
-    'Platformă turistică pentru Borșa, Maramureș — cazări, servicii turistice, restaurante și obiective turistice în inima Munților Rodnei.',
+    'Platformă turistică pentru Borșa, Maramureș — cazări, pensiuni, hoteluri, vile, servicii turistice, restaurante și obiective turistice în inima Munților Rodnei.',
+  keywords: [
+    'cazare borsa', 'cazare maramures', 'pensiuni borsa', 'hoteluri borsa',
+    'restaurante borsa', 'servicii turistice borsa', 'obiective turistice borsa',
+    'cazare muntii rodnei', 'partia olimpica borsa', 'vacanta borsa maramures',
+    'cazare romania', 'pensiuni maramures', 'vile borsa',
+  ],
+  openGraph: {
+    type: 'website',
+    locale: 'ro_RO',
+    siteName: 'VisitBorsa',
+    title: 'VisitBorsa — Cazare Borșa, Maramureș',
+    description: 'Pensiuni, hoteluri, restaurante și servicii turistice în Borșa, inima Munților Rodnei.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'VisitBorsa — Cazare Borșa, Maramureș',
+    description: 'Pensiuni, hoteluri, restaurante și servicii turistice în Borșa, inima Munților Rodnei.',
+  },
+  alternates: {
+    canonical: 'https://visitborsa.ro',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   manifest: '/manifest.json',
 };
 

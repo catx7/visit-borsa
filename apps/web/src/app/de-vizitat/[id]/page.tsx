@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardContent } from '@/components/ui/card';
+import { JsonLd } from '@/components/seo/json-ld';
 import { getLocalizedField } from '@/lib/utils';
 import * as api from '@/lib/api';
 
@@ -67,6 +68,16 @@ export default function AttractionDetailPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <JsonLd data={{
+        '@context': 'https://schema.org',
+        '@type': 'TouristAttraction',
+        name: title,
+        description: description,
+        geo: { '@type': 'GeoCoordinates', latitude: attraction.latitude, longitude: attraction.longitude },
+        image: images[0],
+        url: `https://visitborsa.ro/de-vizitat/${attraction.id}`,
+      }} />
+
       {/* Back link */}
       <Link href="/de-vizitat" className="mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
         <ArrowLeft className="h-4 w-4" />

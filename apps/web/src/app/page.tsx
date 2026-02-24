@@ -14,6 +14,7 @@ import { AttractionCard } from '@/components/attraction/attraction-card';
 import { ServiceCard } from '@/components/service/service-card';
 import { RestaurantCard } from '@/components/restaurant/restaurant-card';
 import { Skeleton } from '@/components/ui/skeleton';
+import { JsonLd } from '@/components/seo/json-ld';
 import { getLocalizedField } from '@/lib/utils';
 import * as api from '@/lib/api';
 
@@ -87,6 +88,31 @@ export default function HomePage() {
 
   return (
     <div>
+      <JsonLd data={{
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'VisitBorsa',
+        url: 'https://visitborsa.ro',
+        description: 'Platformă turistică pentru Borșa, Maramureș — cazări, servicii turistice, restaurante și obiective turistice.',
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: 'https://visitborsa.ro/cazari?search={search_term_string}',
+          'query-input': 'required name=search_term_string',
+        },
+      }} />
+      <JsonLd data={{
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'VisitBorsa',
+        url: 'https://visitborsa.ro',
+        description: 'Platformă turistică pentru Borșa, Maramureș',
+        areaServed: {
+          '@type': 'City',
+          name: 'Borșa',
+          containedInPlace: { '@type': 'AdministrativeArea', name: 'Maramureș, România' },
+        },
+      }} />
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-primary py-28 sm:py-40">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&h=900&fit=crop')] bg-cover bg-center opacity-30" />

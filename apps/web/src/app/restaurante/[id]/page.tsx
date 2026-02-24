@@ -8,9 +8,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import {
   MapPin,
-  Phone,
-  Mail,
-  Globe,
   Clock,
   UtensilsCrossed,
   ChevronLeft,
@@ -21,6 +18,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardContent } from '@/components/ui/card';
+import { RevealContactButton } from '@/components/ui/reveal-contact-button';
+import { JsonLd } from '@/components/seo/json-ld';
 import { getLocalizedField } from '@/lib/utils';
 import * as api from '@/lib/api';
 
@@ -79,6 +78,19 @@ export default function RestaurantDetailPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <JsonLd data={{
+        '@context': 'https://schema.org',
+        '@type': 'Restaurant',
+        name: title,
+        description: description,
+        servesCuisine: cuisine || undefined,
+        priceRange: restaurant.priceRange === 'BUDGET' ? '$' : restaurant.priceRange === 'MODERATE' ? '$$' : '$$$',
+        address: restaurant.address ? { '@type': 'PostalAddress', streetAddress: restaurant.address, addressLocality: 'Borșa', addressRegion: 'Maramureș', addressCountry: 'RO' } : undefined,
+        geo: restaurant.latitude ? { '@type': 'GeoCoordinates', latitude: restaurant.latitude, longitude: restaurant.longitude } : undefined,
+        image: images[0],
+        url: `https://visitborsa.ro/restaurante/${restaurant.id}`,
+      }} />
+
       {/* Back link */}
       <Link href="/restaurante" className="mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
         <ArrowLeft className="h-4 w-4" />
@@ -181,33 +193,28 @@ export default function RestaurantDetailPage() {
               <h2 className="text-lg font-semibold mb-3">{t('services.contact')}</h2>
               <div className="space-y-3 text-sm">
                 {restaurant.phone && (
-                  <a
-                    href={`tel:${restaurant.phone}`}
-                    className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
-                  >
-                    <Phone className="h-4 w-4" />
-                    {restaurant.phone}
-                  </a>
+                  <RevealContactButton
+                    value={restaurant.phone}
+                    contactType="PHONE"
+                    entityType="RESTAURANT"
+                    entityId={restaurant.id}
+                  />
                 )}
                 {restaurant.email && (
-                  <a
-                    href={`mailto:${restaurant.email}`}
-                    className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
-                  >
-                    <Mail className="h-4 w-4" />
-                    {restaurant.email}
-                  </a>
+                  <RevealContactButton
+                    value={restaurant.email}
+                    contactType="EMAIL"
+                    entityType="RESTAURANT"
+                    entityId={restaurant.id}
+                  />
                 )}
                 {restaurant.website && (
-                  <a
-                    href={restaurant.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
-                  >
-                    <Globe className="h-4 w-4" />
-                    {t('services.website')}
-                  </a>
+                  <RevealContactButton
+                    value={restaurant.website}
+                    contactType="WEBSITE"
+                    entityType="RESTAURANT"
+                    entityId={restaurant.id}
+                  />
                 )}
               </div>
             </CardContent>

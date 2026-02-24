@@ -22,6 +22,7 @@ export class AdminService {
       totalRestaurants,
       pendingRestaurants,
       totalAttractions,
+      totalContactClicks,
     ] = await Promise.all([
       this.prisma.user.count(),
       this.prisma.property.count(),
@@ -31,6 +32,7 @@ export class AdminService {
       this.prisma.restaurant.count(),
       this.prisma.restaurant.count({ where: { status: 'PENDING' } }),
       this.prisma.touristAttraction.count(),
+      this.prisma.contactClick.count(),
     ]);
 
     return {
@@ -42,6 +44,7 @@ export class AdminService {
       totalRestaurants,
       pendingRestaurants,
       totalAttractions,
+      totalContactClicks,
     };
   }
 

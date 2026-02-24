@@ -10,8 +10,6 @@ import {
   MapPin,
   Users,
   DoorOpen,
-  Phone,
-  Mail,
   ChevronLeft,
   ChevronRight,
   ArrowLeft,
@@ -20,7 +18,9 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardContent } from '@/components/ui/card';
+import { RevealContactButton } from '@/components/ui/reveal-contact-button';
 import { AttractionCard } from '@/components/attraction/attraction-card';
+import { JsonLd } from '@/components/seo/json-ld';
 import { formatPrice, getLocalizedField } from '@/lib/utils';
 import * as api from '@/lib/api';
 
@@ -85,6 +85,18 @@ export default function CazareDetailPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <JsonLd data={{
+        '@context': 'https://schema.org',
+        '@type': 'LodgingBusiness',
+        name: title,
+        description: description,
+        address: property.address ? { '@type': 'PostalAddress', streetAddress: property.address, addressLocality: 'Borșa', addressRegion: 'Maramureș', addressCountry: 'RO' } : undefined,
+        geo: { '@type': 'GeoCoordinates', latitude: property.latitude, longitude: property.longitude },
+        image: images[0],
+        priceRange: `${property.pricePerNight} RON`,
+        url: `https://visitborsa.ro/cazari/${property.id}`,
+      }} />
+
       {/* Back link */}
       <Link href="/cazari" className="mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
         <ArrowLeft className="h-4 w-4" />
@@ -215,22 +227,20 @@ export default function CazareDetailPage() {
                     </p>
                   )}
                   {property.owner.phone && (
-                    <a
-                      href={`tel:${property.owner.phone}`}
-                      className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
-                    >
-                      <Phone className="h-4 w-4" />
-                      {property.owner.phone}
-                    </a>
+                    <RevealContactButton
+                      value={property.owner.phone}
+                      contactType="PHONE"
+                      entityType="PROPERTY"
+                      entityId={property.id}
+                    />
                   )}
                   {property.owner.email && (
-                    <a
-                      href={`mailto:${property.owner.email}`}
-                      className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
-                    >
-                      <Mail className="h-4 w-4" />
-                      {property.owner.email}
-                    </a>
+                    <RevealContactButton
+                      value={property.owner.email}
+                      contactType="EMAIL"
+                      entityType="PROPERTY"
+                      entityId={property.id}
+                    />
                   )}
                 </div>
               </CardContent>

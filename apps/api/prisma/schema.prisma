@@ -57,6 +57,18 @@ enum PriceRange {
   PREMIUM
 }
 
+enum EntityType {
+  PROPERTY
+  SERVICE
+  RESTAURANT
+}
+
+enum ContactType {
+  PHONE
+  EMAIL
+  WEBSITE
+}
+
 model User {
   id                String       @id @default(cuid())
   email             String       @unique
@@ -163,4 +175,15 @@ model Restaurant {
   isActive          Boolean        @default(true)
   createdAt         DateTime       @default(now())
   updatedAt         DateTime       @updatedAt
+}
+
+model ContactClick {
+  id          String      @id @default(cuid())
+  entityType  EntityType
+  entityId    String
+  contactType ContactType
+  createdAt   DateTime    @default(now())
+
+  @@index([entityType, entityId])
+  @@index([createdAt])
 }

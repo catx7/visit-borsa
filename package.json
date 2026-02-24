@@ -1,5 +1,9 @@
 {
-  "name": "pensiuni",
+  "name": "visit-borsa",
+  "version": "1.0.0",
+  "description": "VisitBorsa - Platformă turistică pentru Borșa, Maramureș",
+  "author": "Catalin Stetco - CTX",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "turbo dev",

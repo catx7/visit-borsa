@@ -412,6 +412,18 @@ export async function uploadImages(token: string, files: File[]): Promise<string
   return data.urls;
 }
 
+// --- Contact Clicks ---
+export function trackContactClick(data: {
+  entityType: 'PROPERTY' | 'SERVICE' | 'RESTAURANT';
+  entityId: string;
+  contactType: 'PHONE' | 'EMAIL' | 'WEBSITE';
+}) {
+  return fetchApi<{ id: string }>('/contact-clicks', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
 // --- Admin ---
 export interface AdminStats {
   totalUsers: number;
@@ -422,6 +434,7 @@ export interface AdminStats {
   totalRestaurants: number;
   pendingRestaurants: number;
   totalAttractions: number;
+  totalContactClicks: number;
 }
 
 export function getAdminStats(token: string) {

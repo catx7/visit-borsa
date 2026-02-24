@@ -9,6 +9,7 @@ import {
   Wrench,
   UtensilsCrossed,
   MapPin,
+  MousePointerClick,
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -34,6 +35,7 @@ const statCards: StatCard[] = [
   { key: 'totalRestaurants', icon: UtensilsCrossed, labelKey: 'admin.stats.totalRestaurants', color: 'text-orange-600', bgColor: 'bg-orange-50' },
   { key: 'pendingRestaurants', icon: Clock, labelKey: 'admin.stats.pendingRestaurants', color: 'text-amber-600', bgColor: 'bg-amber-50', isPending: true },
   { key: 'totalAttractions', icon: MapPin, labelKey: 'admin.stats.totalAttractions', color: 'text-purple-600', bgColor: 'bg-purple-50' },
+  { key: 'totalContactClicks', icon: MousePointerClick, labelKey: 'admin.stats.totalContactClicks', color: 'text-rose-600', bgColor: 'bg-rose-50' },
 ];
 
 export default function AdminDashboardPage() {

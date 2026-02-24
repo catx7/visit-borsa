@@ -8,9 +8,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import {
   MapPin,
-  Phone,
-  Mail,
-  Globe,
   Tag,
   ChevronLeft,
   ChevronRight,
@@ -20,6 +17,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardContent } from '@/components/ui/card';
+import { RevealContactButton } from '@/components/ui/reveal-contact-button';
+import { JsonLd } from '@/components/seo/json-ld';
 import { getLocalizedField } from '@/lib/utils';
 import * as api from '@/lib/api';
 
@@ -77,6 +76,17 @@ export default function ServiceDetailPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <JsonLd data={{
+        '@context': 'https://schema.org',
+        '@type': 'TouristAttraction',
+        name: title,
+        description: description,
+        address: service.address ? { '@type': 'PostalAddress', streetAddress: service.address, addressLocality: 'Borșa', addressRegion: 'Maramureș', addressCountry: 'RO' } : undefined,
+        geo: service.latitude ? { '@type': 'GeoCoordinates', latitude: service.latitude, longitude: service.longitude } : undefined,
+        image: images[0],
+        url: `https://visitborsa.ro/servicii/${service.id}`,
+      }} />
+
       {/* Back link */}
       <Link href="/servicii" className="mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
         <ArrowLeft className="h-4 w-4" />
@@ -168,33 +178,28 @@ export default function ServiceDetailPage() {
               <h2 className="text-lg font-semibold mb-3">{t('services.contact')}</h2>
               <div className="space-y-3 text-sm">
                 {service.phone && (
-                  <a
-                    href={`tel:${service.phone}`}
-                    className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
-                  >
-                    <Phone className="h-4 w-4" />
-                    {service.phone}
-                  </a>
+                  <RevealContactButton
+                    value={service.phone}
+                    contactType="PHONE"
+                    entityType="SERVICE"
+                    entityId={service.id}
+                  />
                 )}
                 {service.email && (
-                  <a
-                    href={`mailto:${service.email}`}
-                    className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
-                  >
-                    <Mail className="h-4 w-4" />
-                    {service.email}
-                  </a>
+                  <RevealContactButton
+                    value={service.email}
+                    contactType="EMAIL"
+                    entityType="SERVICE"
+                    entityId={service.id}
+                  />
                 )}
                 {service.website && (
-                  <a
-                    href={service.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
-                  >
-                    <Globe className="h-4 w-4" />
-                    {t('services.website')}
-                  </a>
+                  <RevealContactButton
+                    value={service.website}
+                    contactType="WEBSITE"
+                    entityType="SERVICE"
+                    entityId={service.id}
+                  />
                 )}
               </div>
             </CardContent>

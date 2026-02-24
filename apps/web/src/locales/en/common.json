@@ -323,7 +323,8 @@
       "pendingServices": "Pending Services",
       "totalRestaurants": "Total Restaurants",
       "pendingRestaurants": "Pending Restaurants",
-      "totalAttractions": "Total Attractions"
+      "totalAttractions": "Total Attractions",
+      "totalContactClicks": "Contact Clicks"
     },
     "approve": "Approve",
     "reject": "Reject",
