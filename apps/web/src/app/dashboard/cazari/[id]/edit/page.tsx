@@ -108,6 +108,7 @@ export default function EditCazarePage() {
       queryClient.invalidateQueries({ queryKey: ['my-properties'] });
       setSuccess(t('propertyForm.updated'));
       setError('');
+      setTimeout(() => router.push(`/cazari/${id}`), 1500);
     },
     onError: (err) => {
       if (err instanceof ApiError) {

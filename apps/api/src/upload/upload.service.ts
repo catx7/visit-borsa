@@ -63,8 +63,8 @@ export class UploadService {
         {
           folder: 'pensiuni',
           transformation: [
-            { width: 1200, height: 800, crop: 'limit' },
-            { quality: 'auto' },
+            { width: 2400, height: 1600, crop: 'limit' },
+            { quality: 'auto:good' },
             { fetch_format: 'auto' },
           ],
         },

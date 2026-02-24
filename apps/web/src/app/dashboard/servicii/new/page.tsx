@@ -86,7 +86,7 @@ export default function NewServiciuPage() {
     const files = e.target.files;
     if (!files || files.length === 0 || !token) return;
 
-    const remaining = 8 - images.length;
+    const remaining = 3 - images.length;
     if (remaining <= 0) return;
 
     const filesToUpload = Array.from(files).slice(0, remaining);
@@ -286,11 +286,11 @@ export default function NewServiciuPage() {
           <CardHeader>
             <CardTitle className="text-lg">{t('propertyForm.images')}</CardTitle>
             <p className="text-xs text-muted-foreground">
-              {t('propertyForm.imagesCount', { count: images.length, max: 8 })}
+              {t('propertyForm.imagesCount', { count: images.length, max: 3 })}
             </p>
           </CardHeader>
           <CardContent className="space-y-4">
-            {images.length < 8 && (
+            {images.length < 3 && (
               <div
                 className="flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-border p-8 transition-colors hover:border-primary/50"
                 onClick={() => fileInputRef.current?.click()}
