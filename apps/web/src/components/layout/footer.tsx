@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
 import { MapPin, Mail, Mountain } from 'lucide-react';
 
@@ -14,9 +15,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 font-bold text-sm">
-                VB
-              </div>
+              <Image src="/images/logo.png" alt={t('site.name')} width={36} height={36} className="rounded-xl" />
               <span className="font-bold text-lg tracking-tight">{t('site.name')}</span>
             </div>
             <p className="mt-4 text-sm text-white/70 leading-relaxed">
@@ -78,6 +77,12 @@ export function Footer() {
         </div>
         <div className="mt-12 border-t border-white/15 pt-8 flex flex-col items-center gap-2 text-sm text-white/50">
           <span>&copy; {year} {t('site.name')}. {t('footer.rights')}.</span>
+          <div className="flex items-center gap-1.5">
+            <Mail className="h-3.5 w-3.5" />
+            <a href="mailto:stetco.catalin7@gmail.com" className="hover:text-white transition-colors">
+              stetco.catalin7@gmail.com
+            </a>
+          </div>
           <span>Made with &hearts; by CTX</span>
         </div>
       </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/lib/auth-context';
@@ -48,9 +49,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/85 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2.5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground font-bold text-sm shadow-sm">
-            VB
-          </div>
+          <Image src="/images/logo.png" alt={t('site.name')} width={36} height={36} className="rounded-xl shadow-sm" />
           <span className="hidden font-bold text-lg tracking-tight sm:inline-block">
             {t('site.name')}
           </span>

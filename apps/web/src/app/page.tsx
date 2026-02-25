@@ -115,8 +115,8 @@ export default function HomePage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-primary py-28 sm:py-40">
-        <div className="absolute inset-0 bg-[url('/images/hero-home.jpg')] bg-cover bg-center opacity-30" />
-        <div className="absolute inset-0 bg-linear-to-t from-primary via-primary/60 to-primary/30" />
+        <div className="absolute inset-0 bg-[url('/images/hero-home.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-linear-to-t from-primary/80 via-primary/30 to-primary/10" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl drop-shadow-sm">
