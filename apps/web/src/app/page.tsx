@@ -30,20 +30,20 @@ function SectionHeader({
   icon: React.ElementType;
 }) {
   return (
-    <div className="flex items-end justify-between mb-10">
+    <div className="flex items-end justify-between mb-12">
       <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/8 text-primary">
           <Icon className="h-5 w-5" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{title}</h2>
+          <h2 className="font-display text-2xl tracking-tight sm:text-3xl">{title}</h2>
         </div>
       </div>
       <Link
         href={href}
-        className="flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
+        className="group flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
       >
-        {viewAllLabel} <ArrowRight className="h-4 w-4" />
+        {viewAllLabel} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
       </Link>
     </div>
   );
@@ -114,15 +114,15 @@ export default function HomePage() {
       }} />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-primary py-28 sm:py-40">
+      <section className="relative overflow-hidden bg-primary py-32 sm:py-44">
         <div className="absolute inset-0 bg-[url('/images/hero-home.jpg')] bg-cover bg-center" />
         <div className="absolute inset-0 bg-linear-to-t from-primary/80 via-primary/30 to-primary/10" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl drop-shadow-sm">
+            <h1 className="font-display text-4xl text-white sm:text-5xl lg:text-7xl drop-shadow-lg">
               {t('home.hero.title')}
             </h1>
-            <p className="mt-5 text-lg text-white/80 sm:text-xl">
+            <p className="mt-6 text-lg text-white/85 sm:text-xl leading-relaxed">
               {t('home.hero.subtitle')}
             </p>
             <form onSubmit={handleSearch} className="mt-10 flex gap-3 sm:mx-auto sm:max-w-lg">
@@ -146,13 +146,13 @@ export default function HomePage() {
 
       {/* Location of the Month */}
       {(loadingLocation || locationOfMonth) && (
-        <section className="py-20">
+        <section className="py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-600">
+            <div className="flex items-center gap-3 mb-10">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-100 text-amber-600">
                 <Star className="h-5 w-5 fill-current" />
               </div>
-              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{t('home.locationOfMonth')}</h2>
+              <h2 className="font-display text-2xl tracking-tight sm:text-3xl">{t('home.locationOfMonth')}</h2>
             </div>
             <div>
               {loadingLocation ? (
@@ -168,7 +168,7 @@ export default function HomePage() {
                 const href = `${linkMap[locationOfMonth.type] ?? '/de-vizitat'}/${entity.id}`;
                 return (
                   <Link href={href}>
-                    <div className="group relative overflow-hidden rounded-2xl shadow-lg">
+                    <div className="group relative overflow-hidden rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)]">
                       <div className="relative h-72 sm:h-112 w-full overflow-hidden">
                         {entity.images?.[0] ? (
                           <Image
@@ -191,7 +191,7 @@ export default function HomePage() {
                               {t('home.locationOfMonth')}
                             </span>
                           </div>
-                          <h3 className="text-2xl sm:text-4xl font-bold text-white drop-shadow-sm">
+                          <h3 className="font-display text-2xl sm:text-4xl text-white drop-shadow-lg">
                             {getLocalizedField(entity, 'title', i18n.language)}
                           </h3>
                           <p className="mt-3 line-clamp-2 text-base text-white/80 max-w-2xl">
@@ -209,7 +209,7 @@ export default function HomePage() {
       )}
 
       {/* Promoted Properties */}
-      <section className="bg-secondary/50 py-20">
+      <section className="bg-secondary/50 py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             title={t('home.promotedProperties')}
@@ -230,7 +230,7 @@ export default function HomePage() {
       </section>
 
       {/* Promoted Services */}
-      <section className="py-20">
+      <section className="py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             title={t('home.promotedServices')}
@@ -251,7 +251,7 @@ export default function HomePage() {
       </section>
 
       {/* Promoted Restaurants */}
-      <section className="bg-secondary/50 py-20">
+      <section className="bg-secondary/50 py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             title={t('home.promotedRestaurants')}
@@ -272,7 +272,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Attractions */}
-      <section className="py-20">
+      <section className="py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             title={t('home.featuredAttractions')}
@@ -293,17 +293,17 @@ export default function HomePage() {
       </section>
 
       {/* Ski Slopes CTA */}
-      <section className="relative overflow-hidden bg-primary py-20 mx-4 sm:mx-6 lg:mx-8 rounded-3xl my-8">
+      <section className="relative overflow-hidden bg-primary py-20 mx-4 sm:mx-6 lg:mx-8 rounded-3xl my-10">
         <div className="absolute inset-0 bg-[url('/images/partia-telegondola.jpg')] bg-cover bg-center opacity-20" />
         <div className="absolute inset-0 bg-linear-to-r from-primary via-primary/90 to-primary/70" />
         <div className="relative mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <div className="flex flex-col items-center gap-8 text-center text-white sm:flex-row sm:text-left">
-            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm shrink-0">
+            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-md shrink-0">
               <Mountain className="h-10 w-10" />
             </div>
             <div className="flex-1">
-              <h2 className="text-2xl font-bold sm:text-3xl">{t('home.skiCta')}</h2>
-              <p className="mt-2 text-white/75 text-lg">{t('home.skiCtaDesc')}</p>
+              <h2 className="font-display text-2xl sm:text-3xl">{t('home.skiCta')}</h2>
+              <p className="mt-3 text-white/75 text-lg leading-relaxed">{t('home.skiCtaDesc')}</p>
             </div>
             <Link href="/partia-olimpica">
               <Button className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-xl px-8 py-6 text-base font-semibold shadow-lg">

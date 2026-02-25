@@ -81,7 +81,7 @@ function SlopeCard({
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-6">
-          <h3 className="text-2xl font-bold text-white">{t(`skiSlopes.${slopeKey}.name`)}</h3>
+          <h3 className="font-display text-2xl text-white">{t(`skiSlopes.${slopeKey}.name`)}</h3>
           <p className="text-white/80 text-sm mt-1">{t(`skiSlopes.${slopeKey}.subtitle`)}</p>
         </div>
       </div>
@@ -158,7 +158,7 @@ export default function PartiaOlimpicaPage() {
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm mb-4">
             <Mountain className="h-7 w-7 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-white sm:text-5xl drop-shadow-md">
+          <h1 className="font-display text-3xl text-white sm:text-5xl drop-shadow-lg">
             {t('skiSlopes.title')}
           </h1>
           <p className="mt-3 text-lg text-white/85 max-w-2xl">
@@ -183,7 +183,7 @@ export default function PartiaOlimpicaPage() {
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <ArrowUpDown className="h-5 w-5" />
             </div>
-            <h2 className="text-2xl font-bold tracking-tight">{t('skiSlopes.features')}</h2>
+            <h2 className="font-display text-2xl tracking-tight">{t('skiSlopes.features')}</h2>
           </div>
 
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -219,7 +219,7 @@ export default function PartiaOlimpicaPage() {
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-100 text-red-500">
               <Video className="h-5 w-5" />
             </div>
-            <h2 className="text-2xl font-bold">{t('skiSlopes.liveCam')}</h2>
+            <h2 className="font-display text-2xl">{t('skiSlopes.liveCam')}</h2>
           </div>
           <p className="text-center text-muted-foreground mb-10">{t('skiSlopes.liveCamDesc')}</p>
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">

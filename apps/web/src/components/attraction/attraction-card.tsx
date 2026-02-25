@@ -15,14 +15,14 @@ export function AttractionCard({ attraction }: { attraction: AttractionDto }) {
 
   return (
     <Link href={`/de-vizitat/${attraction.id}`}>
-      <Card className="group border-0 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+      <Card className="group border-0 overflow-hidden hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all duration-500 ease-out">
         <div className="relative aspect-[4/3] overflow-hidden">
           {attraction.images[0] ? (
             <Image
               src={attraction.images[0]}
               alt={title}
               fill
-              className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           ) : (

@@ -46,11 +46,11 @@ export function Header() {
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/');
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/85 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2.5">
-          <Image src="/images/logo.png" alt={t('site.name')} width={36} height={36} className="rounded-xl shadow-sm" />
-          <span className="hidden font-bold text-lg tracking-tight sm:inline-block">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-2xl shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex items-center gap-3">
+          <Image src="/images/logo.png" alt={t('site.name')} width={40} height={40} className="rounded-xl" />
+          <span className="hidden font-display text-xl tracking-tight sm:inline-block">
             {t('site.name')}
           </span>
         </Link>

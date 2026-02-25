@@ -26,14 +26,14 @@ export function PropertyCard({ property }: { property: PropertyDto }) {
 
   return (
     <Link href={`/cazari/${property.id}`}>
-      <Card className="group border-0 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+      <Card className="group border-0 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all duration-500 ease-out overflow-hidden">
         <div className="relative aspect-4/3 overflow-hidden">
           {property.images[0] ? (
             <Image
               src={property.images[0]}
               alt={title}
               fill
-              className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           ) : (
@@ -41,7 +41,7 @@ export function PropertyCard({ property }: { property: PropertyDto }) {
               <span className="text-muted-foreground">No image</span>
             </div>
           )}
-          <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
           <span className={`absolute left-3 top-3 rounded-full backdrop-blur-sm px-3 py-1 text-xs font-semibold shadow-sm ${badgeColor}`}>
             {typeLabel}
           </span>

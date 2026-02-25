@@ -19,7 +19,7 @@ export default function DeVizitatPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-bold">{t('attractions.title')}</h1>
+      <h1 className="font-display text-3xl tracking-tight sm:text-4xl">{t('attractions.title')}</h1>
 
       {/* Results */}
       <div className="mt-8">

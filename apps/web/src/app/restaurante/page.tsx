@@ -54,10 +54,10 @@ export default function RestaurantePage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{t('restaurants.title')}</h1>
+      <h1 className="font-display text-3xl tracking-tight sm:text-4xl">{t('restaurants.title')}</h1>
 
       {/* Filters */}
-      <div className="mt-8 rounded-2xl border border-border/50 bg-card p-5 shadow-sm">
+      <div className="mt-8 rounded-2xl border border-border/40 bg-secondary/40 p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
         <div className="flex items-center gap-2 mb-4">
           <SlidersHorizontal className="h-4 w-4 text-muted-foreground" />
           <span className="font-medium text-sm">{t('properties.filters')}</span>

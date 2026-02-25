@@ -10,13 +10,13 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border/60 bg-primary text-primary-foreground">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="border-t border-border/40 bg-primary text-primary-foreground">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="flex items-center gap-2.5">
-              <Image src="/images/logo.png" alt={t('site.name')} width={36} height={36} className="rounded-xl" />
-              <span className="font-bold text-lg tracking-tight">{t('site.name')}</span>
+            <div className="flex items-center gap-3">
+              <Image src="/images/logo.png" alt={t('site.name')} width={40} height={40} className="rounded-xl" />
+              <span className="font-display text-xl tracking-tight">{t('site.name')}</span>
             </div>
             <p className="mt-4 text-sm text-white/70 leading-relaxed">
               {t('footer.description')}
@@ -75,7 +75,7 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-12 border-t border-white/15 pt-8 flex flex-col items-center gap-2 text-sm text-white/50">
+        <div className="mt-14 border-t border-white/10 pt-8 flex flex-col items-center gap-2 text-sm text-white/50">
           <span>&copy; {year} {t('site.name')}. {t('footer.rights')}.</span>
           <div className="flex items-center gap-1.5">
             <Mail className="h-3.5 w-3.5" />

@@ -40,10 +40,10 @@ export default function DespreBorsaPage() {
         />
         <div className="absolute inset-0 bg-linear-to-t from-primary/80 via-primary/40 to-primary/20" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-4xl font-bold text-white sm:text-5xl drop-shadow-md">
+          <h1 className="font-display text-4xl text-white sm:text-5xl drop-shadow-lg">
             {t('aboutBorsa.title')}
           </h1>
-          <p className="mt-4 text-lg text-white/85 max-w-2xl sm:text-xl">
+          <p className="mt-5 text-lg text-white/85 max-w-2xl sm:text-xl leading-relaxed">
             {t('aboutBorsa.subtitle')}
           </p>
         </div>
@@ -78,7 +78,7 @@ export default function DespreBorsaPage() {
               <div className={`flex flex-col gap-10 lg:flex-row lg:items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
                 {/* Image */}
                 <div className="lg:w-1/2">
-                  <div className="relative aspect-4/3 overflow-hidden rounded-2xl shadow-lg">
+                  <div className="relative aspect-4/3 overflow-hidden rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.12)]">
                     <Image
                       src={SECTION_IMAGES[key]}
                       alt={t(`aboutBorsa.${key}`)}
@@ -96,7 +96,7 @@ export default function DespreBorsaPage() {
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
                       <Icon className="h-5 w-5" />
                     </div>
-                    <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                    <h2 className="font-display text-2xl tracking-tight sm:text-3xl">
                       {t(`aboutBorsa.${key}`)}
                     </h2>
                   </div>
