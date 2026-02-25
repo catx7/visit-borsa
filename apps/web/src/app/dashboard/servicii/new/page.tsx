@@ -53,6 +53,12 @@ export default function NewServiciuPage() {
     }
   }, [user, authLoading, router]);
 
+  useEffect(() => {
+    if (error) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [error]);
+
   const createMutation = useMutation({
     mutationFn: () =>
       api.createService(token!, {

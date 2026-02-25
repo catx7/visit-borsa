@@ -51,7 +51,6 @@ export default function EditCazarePage() {
   const [paymentMethods, setPaymentMethods] = useState<string[]>([]);
   const [depositRequired, setDepositRequired] = useState(false);
   const [depositPolicyRo, setDepositPolicyRo] = useState('');
-  const [depositPolicyEn, setDepositPolicyEn] = useState('');
   const [priceWholeUnit, setPriceWholeUnit] = useState('');
   const [paidExtras, setPaidExtras] = useState<string[]>([]);
   const [images, setImages] = useState<string[]>([]);
@@ -65,6 +64,12 @@ export default function EditCazarePage() {
       router.push('/login');
     }
   }, [user, authLoading, router]);
+
+  useEffect(() => {
+    if (error) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [error]);
 
   const { data: property, isLoading: loadingProperty } = useQuery({
     queryKey: ['property', id],
@@ -89,7 +94,7 @@ export default function EditCazarePage() {
       setPaymentMethods(property.paymentMethods ?? []);
       setDepositRequired(property.depositRequired ?? false);
       setDepositPolicyRo(property.depositPolicyRo ?? '');
-      setDepositPolicyEn(property.depositPolicyEn ?? '');
+      // depositPolicyEn auto-copied from RO on save
       setPriceWholeUnit(property.priceWholeUnit?.toString() ?? '');
       setPaidExtras(property.paidExtras ?? []);
       setImages(property.images ?? []);
@@ -123,7 +128,7 @@ export default function EditCazarePage() {
         paymentMethods,
         depositRequired,
         depositPolicyRo: depositPolicyRo || undefined,
-        depositPolicyEn: depositPolicyEn || undefined,
+        depositPolicyEn: depositPolicyRo || undefined,
         priceWholeUnit: priceWholeUnit ? parseFloat(priceWholeUnit) : undefined,
         paidExtras,
         images,
@@ -334,7 +339,7 @@ export default function EditCazarePage() {
             <CardTitle className="text-lg">{t('propertyForm.details')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="space-y-2">
                 <label htmlFor="pricePerNight" className="text-sm font-medium">
                   {t('propertyForm.pricePerNight')}
@@ -465,32 +470,18 @@ export default function EditCazarePage() {
                 {t('propertyForm.depositRequired')}
               </label>
               {depositRequired && (
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mt-2">
-                  <div className="space-y-1">
-                    <label htmlFor="depositPolicyRo" className="text-xs text-muted-foreground">
-                      {t('propertyForm.depositPolicy')} (RO)
-                    </label>
-                    <Textarea
-                      id="depositPolicyRo"
-                      value={depositPolicyRo}
-                      onChange={(e) => setDepositPolicyRo(e.target.value)}
-                      rows={2}
-                      placeholder={t('propertyForm.depositPolicyHint')}
-                      disabled={updateMutation.isPending}
-                    />
-                  </div>
-                  <div className="space-y-1">
-                    <label htmlFor="depositPolicyEn" className="text-xs text-muted-foreground">
-                      {t('propertyForm.depositPolicy')} (EN)
-                    </label>
-                    <Textarea
-                      id="depositPolicyEn"
-                      value={depositPolicyEn}
-                      onChange={(e) => setDepositPolicyEn(e.target.value)}
-                      rows={2}
-                      disabled={updateMutation.isPending}
-                    />
-                  </div>
+                <div className="mt-2">
+                  <label htmlFor="depositPolicyRo" className="text-xs text-muted-foreground">
+                    {t('propertyForm.depositPolicy')}
+                  </label>
+                  <Textarea
+                    id="depositPolicyRo"
+                    value={depositPolicyRo}
+                    onChange={(e) => setDepositPolicyRo(e.target.value)}
+                    rows={2}
+                    placeholder={t('propertyForm.depositPolicyHint')}
+                    disabled={updateMutation.isPending}
+                  />
                 </div>
               )}
             </div>

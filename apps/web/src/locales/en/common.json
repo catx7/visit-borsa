@@ -318,6 +318,7 @@
     "depositPolicyEn": "Deposit policy (English)",
     "priceWholeUnit": "Whole unit price / night (RON)",
     "priceWholeUnitHint": "Optional — fill in only if you offer whole unit rental",
+    "depositPolicyHint": "E.g., 30% deposit on confirmation, balance at check-in",
     "paidExtras": "Paid extras",
     "uploadImages": "Upload images",
     "dragOrClick": "Drag files here or click to select",

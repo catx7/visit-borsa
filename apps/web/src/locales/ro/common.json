@@ -318,6 +318,7 @@
     "depositPolicyEn": "Politica de avans (Engleză)",
     "priceWholeUnit": "Preț unitate integrală / noapte (RON)",
     "priceWholeUnitHint": "Opțional — completați doar dacă oferiți închiriere integrală",
+    "depositPolicyHint": "Ex: 30% avans la confirmare, restul la cazare",
     "paidExtras": "Extra contra cost",
     "uploadImages": "Încarcă imagini",
     "dragOrClick": "Trage fișiere aici sau click pentru a selecta",

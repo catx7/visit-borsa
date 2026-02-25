@@ -11,12 +11,9 @@ import { ApiError } from '@/lib/api';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Select } from '@/components/ui/select';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { MapPickerDynamic } from '@/components/map/map-picker-dynamic';
-
-const PRICE_RANGES = ['BUDGET', 'MODERATE', 'PREMIUM'] as const;
 
 export default function EditRestaurantePage() {
   const { t } = useTranslation();
@@ -34,7 +31,6 @@ export default function EditRestaurantePage() {
   const [email, setEmail] = useState('');
   const [website, setWebsite] = useState('');
   const [address, setAddress] = useState('');
-  const [priceRange, setPriceRange] = useState<string>('');
   const [openingHours, setOpeningHours] = useState('');
   const [latitude, setLatitude] = useState<number | undefined>(undefined);
   const [longitude, setLongitude] = useState<number | undefined>(undefined);
@@ -49,6 +45,12 @@ export default function EditRestaurantePage() {
       router.push('/login');
     }
   }, [user, authLoading, router]);
+
+  useEffect(() => {
+    if (error) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [error]);
 
   const { data: restaurant, isLoading: loadingRestaurant } = useQuery({
     queryKey: ['restaurant', id],
@@ -66,7 +68,6 @@ export default function EditRestaurantePage() {
       setEmail(restaurant.email ?? '');
       setWebsite(restaurant.website ?? '');
       setAddress(restaurant.address ?? '');
-      setPriceRange(restaurant.priceRange);
       setOpeningHours(restaurant.openingHours ?? '');
       setLatitude(restaurant.latitude ?? undefined);
       setLongitude(restaurant.longitude ?? undefined);
@@ -88,7 +89,6 @@ export default function EditRestaurantePage() {
         email: email || undefined,
         website: website || undefined,
         address: address || undefined,
-        priceRange,
         openingHours: openingHours || undefined,
         latitude,
         longitude,
@@ -233,37 +233,17 @@ export default function EditRestaurantePage() {
                 disabled={updateMutation.isPending}
               />
             </div>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className="space-y-2">
-                <label htmlFor="priceRange" className="text-sm font-medium">
-                  {t('restaurants.priceRange')}
-                </label>
-                <Select
-                  id="priceRange"
-                  value={priceRange}
-                  onChange={(e) => setPriceRange(e.target.value)}
-                  required
-                >
-                  <option value="">{t('restaurantForm.selectPriceRange')}</option>
-                  {PRICE_RANGES.map((pr) => (
-                    <option key={pr} value={pr}>
-                      {t(`priceRanges.${pr}`)}
-                    </option>
-                  ))}
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="openingHours" className="text-sm font-medium">
-                  {t('restaurantForm.openingHours')}
-                </label>
-                <Input
-                  id="openingHours"
-                  value={openingHours}
-                  onChange={(e) => setOpeningHours(e.target.value)}
-                  placeholder="09:00 - 22:00"
-                  disabled={updateMutation.isPending}
-                />
-              </div>
+            <div className="space-y-2">
+              <label htmlFor="openingHours" className="text-sm font-medium">
+                {t('restaurantForm.openingHours')}
+              </label>
+              <Input
+                id="openingHours"
+                value={openingHours}
+                onChange={(e) => setOpeningHours(e.target.value)}
+                placeholder="09:00 - 22:00"
+                disabled={updateMutation.isPending}
+              />
             </div>
           </CardContent>
         </Card>

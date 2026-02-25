@@ -56,6 +56,12 @@ export default function EditServiciuPage() {
     }
   }, [user, authLoading, router]);
 
+  useEffect(() => {
+    if (error) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [error]);
+
   const { data: service, isLoading: loadingService } = useQuery({
     queryKey: ['service', id],
     queryFn: () => api.getServiceById(id),
