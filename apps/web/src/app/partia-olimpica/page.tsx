@@ -17,12 +17,12 @@ import {
 import { Card, CardContent } from '@/components/ui/card';
 
 const SLOPE_IMAGES: Record<string, string> = {
-  olimpica: 'https://images.unsplash.com/photo-1551524559-8af4e6624178?w=800&h=500&fit=crop',
-  cascada: 'https://images.unsplash.com/photo-1517483000871-1dbf64a6e1c6?w=800&h=500&fit=crop',
-  prislop: 'https://images.unsplash.com/photo-1565992441121-4367c2967103?w=800&h=500&fit=crop',
+  olimpica: '/images/partia-telegondola.jpg',
+  cascada: '/images/partia-cascada.jpg',
+  prislop: '/images/partia-prislop.jpg',
 };
 
-const HERO_IMAGE = 'https://images.unsplash.com/photo-1551524559-8af4e6624178?w=1600&h=600&fit=crop';
+const HERO_IMAGE = '/images/hero-ski.jpg';
 
 interface SlopeSpec {
   icon: React.ElementType;

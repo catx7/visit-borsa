@@ -5,14 +5,14 @@ import { useTranslation } from 'react-i18next';
 import { History, MapPin, TreePine, Sparkles, Church, Mountain, Users, Ruler } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
-const HERO_IMAGE = 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&h=700&fit=crop';
+const HERO_IMAGE = '/images/despre-borsa1.jpg';
 
 const SECTION_IMAGES: Record<string, string> = {
-  history: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=800&h=500&fit=crop',
-  geography: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=500&fit=crop',
-  nature: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&h=500&fit=crop',
-  traditions: 'https://images.unsplash.com/photo-1555424681-b0ecf4fe11fa?w=800&h=500&fit=crop',
-  landmarks: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=800&h=500&fit=crop',
+  history: '/images/despre-borsa-2.jpg',
+  geography: '/images/despre-borsa3.jpeg',
+  nature: '/images/despre-borsa4.jpeg',
+  traditions: '/images/despre-borsa-5.jpeg',
+  landmarks: '/images/despre-borsa1.jpg',
 };
 
 const SECTIONS = [

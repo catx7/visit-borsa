@@ -115,7 +115,7 @@ export default function HomePage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-primary py-28 sm:py-40">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&h=900&fit=crop')] bg-cover bg-center opacity-30" />
+        <div className="absolute inset-0 bg-[url('/images/hero-home.jpg')] bg-cover bg-center opacity-30" />
         <div className="absolute inset-0 bg-linear-to-t from-primary via-primary/60 to-primary/30" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
@@ -294,7 +294,7 @@ export default function HomePage() {
 
       {/* Ski Slopes CTA */}
       <section className="relative overflow-hidden bg-primary py-20 mx-4 sm:mx-6 lg:mx-8 rounded-3xl my-8">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551524559-8af4e6624178?w=1600&h=600&fit=crop')] bg-cover bg-center opacity-20" />
+        <div className="absolute inset-0 bg-[url('/images/partia-telegondola.jpg')] bg-cover bg-center opacity-20" />
         <div className="absolute inset-0 bg-linear-to-r from-primary via-primary/90 to-primary/70" />
         <div className="relative mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
           <div className="flex flex-col items-center gap-8 text-center text-white sm:flex-row sm:text-left">

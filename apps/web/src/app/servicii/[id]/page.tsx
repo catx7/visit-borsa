@@ -47,7 +47,7 @@ export default function ServiceDetailPage() {
     );
   }
 
-  if (isError || !service) {
+  if (isError || !service || service.status !== 'APPROVED' || !service.isActive) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
         <p className="text-muted-foreground">{t('common.error')}</p>
