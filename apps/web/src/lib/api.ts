@@ -109,6 +109,7 @@ export interface PropertyDto {
   depositRequired: boolean;
   depositPolicyRo: string | null;
   depositPolicyEn: string | null;
+  website: string | null;
   priceWholeUnit: number | null;
   paidExtras: string[];
   promotionOrder: number | null;

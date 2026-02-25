@@ -53,6 +53,7 @@ export default function EditCazarePage() {
   const [depositPolicyRo, setDepositPolicyRo] = useState('');
   const [priceWholeUnit, setPriceWholeUnit] = useState('');
   const [paidExtras, setPaidExtras] = useState<string[]>([]);
+  const [website, setWebsite] = useState('');
   const [images, setImages] = useState<string[]>([]);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
@@ -95,6 +96,7 @@ export default function EditCazarePage() {
       setDepositRequired(property.depositRequired ?? false);
       setDepositPolicyRo(property.depositPolicyRo ?? '');
       // depositPolicyEn auto-copied from RO on save
+      setWebsite(property.website ?? '');
       setPriceWholeUnit(property.priceWholeUnit?.toString() ?? '');
       setPaidExtras(property.paidExtras ?? []);
       setImages(property.images ?? []);
@@ -117,6 +119,7 @@ export default function EditCazarePage() {
         titleEn: title,
         descriptionRo: description,
         descriptionEn: description,
+        website: website || undefined,
         address: address || undefined,
         latitude,
         longitude,
@@ -294,6 +297,19 @@ export default function EditCazarePage() {
                 onChange={(e) => setDescription(e.target.value)}
                 rows={4}
                 required
+                disabled={updateMutation.isPending}
+              />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="website" className="text-sm font-medium">
+                {t('propertyForm.website')}
+              </label>
+              <Input
+                id="website"
+                type="url"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+                placeholder="https://"
                 disabled={updateMutation.isPending}
               />
             </div>

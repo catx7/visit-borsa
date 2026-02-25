@@ -51,6 +51,7 @@ export default function NewCazarePage() {
   const [depositPolicyRo, setDepositPolicyRo] = useState('');
   const [priceWholeUnit, setPriceWholeUnit] = useState('');
   const [paidExtras, setPaidExtras] = useState<string[]>([]);
+  const [website, setWebsite] = useState('');
   const [images, setImages] = useState<string[]>([]);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
@@ -76,6 +77,7 @@ export default function NewCazarePage() {
         titleEn: title,
         descriptionRo: description,
         descriptionEn: description,
+        website: website || undefined,
         address: address || undefined,
         latitude,
         longitude,
@@ -257,6 +259,19 @@ export default function NewCazarePage() {
                 onChange={(e) => setDescription(e.target.value)}
                 rows={4}
                 required
+                disabled={createMutation.isPending}
+              />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="website" className="text-sm font-medium">
+                {t('propertyForm.website')}
+              </label>
+              <Input
+                id="website"
+                type="url"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+                placeholder="https://"
                 disabled={createMutation.isPending}
               />
             </div>

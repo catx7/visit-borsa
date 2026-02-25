@@ -331,7 +331,8 @@
     "updateError": "Actualizarea a eșuat",
     "notOwner": "Nu ești proprietarul acestei listări",
     "notFound": "Listarea nu a fost găsită",
-    "minImagesError": "Este necesară cel puțin o imagine"
+    "minImagesError": "Este necesară cel puțin o imagine",
+    "website": "Website (opțional)"
   },
   "serviceForm": {
     "selectCategory": "Selectează categoria",

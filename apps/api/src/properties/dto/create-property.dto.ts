@@ -109,6 +109,11 @@ export class CreatePropertyDto {
   @IsString()
   depositPolicyEn?: string;
 
+  @ApiPropertyOptional({ example: 'https://pensiune.ro' })
+  @IsOptional()
+  @IsString()
+  website?: string;
+
   @ApiPropertyOptional({ example: 800 })
   @IsOptional()
   @IsNumber()

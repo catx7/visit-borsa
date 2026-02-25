@@ -331,7 +331,8 @@
     "updateError": "Failed to update listing",
     "notOwner": "You are not the owner of this listing",
     "notFound": "Listing not found",
-    "minImagesError": "At least one image is required"
+    "minImagesError": "At least one image is required",
+    "website": "Website (optional)"
   },
   "serviceForm": {
     "selectCategory": "Select category",

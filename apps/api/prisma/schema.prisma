@@ -130,6 +130,7 @@ model Property {
   depositRequired Boolean       @default(false)
   depositPolicyRo String?
   depositPolicyEn String?
+  website        String?
   priceWholeUnit Float?
   paidExtras     String[]
   promotionOrder  Int?

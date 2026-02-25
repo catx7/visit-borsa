@@ -286,6 +286,14 @@ export default function CazareDetailPage() {
                       entityId={property.id}
                     />
                   )}
+                  {property.website && (
+                    <RevealContactButton
+                      value={property.website}
+                      contactType="WEBSITE"
+                      entityType="PROPERTY"
+                      entityId={property.id}
+                    />
+                  )}
                 </div>
                 {property.owner.phone && (
                   <>
