@@ -15,7 +15,7 @@ export class AttractionsService {
       this.prisma.touristAttraction.findMany({
         skip,
         take: limit,
-        orderBy: { createdAt: 'desc' },
+        orderBy: [{ displayOrder: 'asc' }, { createdAt: 'desc' }],
       }),
       this.prisma.touristAttraction.count(),
     ]);
@@ -55,7 +55,7 @@ export class AttractionsService {
   async getFeatured() {
     return this.prisma.touristAttraction.findMany({
       take: 6,
-      orderBy: { createdAt: 'desc' },
+      orderBy: [{ displayOrder: 'asc' }, { createdAt: 'desc' }],
     });
   }
 

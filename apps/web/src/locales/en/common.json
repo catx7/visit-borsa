@@ -448,6 +448,7 @@
       "createTitle": "Add Tourist Attraction",
       "editTitle": "Edit Tourist Attraction",
       "col": {
+        "order": "Order",
         "title": "Title",
         "coordinates": "Coordinates",
         "locationOfMonth": "Location of Month",
@@ -461,6 +462,7 @@
         "descriptionEn": "Description (English)",
         "latitude": "Latitude",
         "longitude": "Longitude",
+        "displayOrder": "Display Order",
         "images": "Images",
         "saving": "Saving...",
         "create": "Create",

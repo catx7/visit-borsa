@@ -448,6 +448,7 @@
       "createTitle": "Adaugă obiectiv turistic",
       "editTitle": "Editează obiectiv turistic",
       "col": {
+        "order": "Ordine",
         "title": "Titlu",
         "coordinates": "Coordonate",
         "locationOfMonth": "Locația lunii",
@@ -461,6 +462,7 @@
         "descriptionEn": "Descriere (Engleză)",
         "latitude": "Latitudine",
         "longitude": "Longitudine",
+        "displayOrder": "Ordine afișare",
         "images": "Imagini",
         "saving": "Se salvează...",
         "create": "Creează",

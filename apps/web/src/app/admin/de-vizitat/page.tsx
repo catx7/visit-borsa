@@ -21,6 +21,7 @@ interface AttractionFormData {
   descriptionEn: string;
   latitude: string;
   longitude: string;
+  displayOrder: string;
   images: string[];
 }
 
@@ -31,6 +32,7 @@ const emptyForm: AttractionFormData = {
   descriptionEn: '',
   latitude: '',
   longitude: '',
+  displayOrder: '0',
   images: [],
 };
 
@@ -93,6 +95,7 @@ export default function AdminDeVizitatPage() {
       descriptionEn: attraction.descriptionEn,
       latitude: String(attraction.latitude),
       longitude: String(attraction.longitude),
+      displayOrder: String(attraction.displayOrder ?? 0),
       images: attraction.images ?? [],
     });
     setEditingId(attraction.id);
@@ -136,6 +139,7 @@ export default function AdminDeVizitatPage() {
       descriptionEn: form.descriptionEn,
       latitude: parseFloat(form.latitude),
       longitude: parseFloat(form.longitude),
+      displayOrder: parseInt(form.displayOrder, 10) || 0,
       images: form.images,
     };
 
@@ -246,6 +250,19 @@ export default function AdminDeVizitatPage() {
                 />
               </div>
 
+              <div>
+                <label className="mb-1 block text-sm font-medium">
+                  {t('admin.attractions.form.displayOrder')}
+                </label>
+                <Input
+                  type="number"
+                  min="0"
+                  value={form.displayOrder}
+                  onChange={(e) => updateField('displayOrder', e.target.value)}
+                />
+              </div>
+              <div />
+
               {/* Images */}
               <div className="md:col-span-2">
                 <label className="mb-1 block text-sm font-medium">
@@ -318,16 +335,19 @@ export default function AdminDeVizitatPage() {
             <table className="w-full text-left text-sm">
               <thead className="border-b border-border bg-muted/50">
                 <tr>
+                  <th className="whitespace-nowrap px-4 py-3 font-medium">{t('admin.attractions.col.order')}</th>
                   <th className="whitespace-nowrap px-4 py-3 font-medium">{t('admin.attractions.col.title')}</th>
                   <th className="whitespace-nowrap px-4 py-3 font-medium">{t('admin.attractions.col.coordinates')}</th>
                   <th className="whitespace-nowrap px-4 py-3 font-medium">{t('admin.attractions.col.locationOfMonth')}</th>
-                  <th className="whitespace-nowrap px-4 py-3 font-medium">{t('admin.attractions.col.date')}</th>
                   <th className="whitespace-nowrap px-4 py-3 font-medium">{t('admin.attractions.col.actions')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
                 {data?.data.map((attraction) => (
                   <tr key={attraction.id} className="hover:bg-muted/30">
+                    <td className="whitespace-nowrap px-4 py-3 text-center font-mono text-muted-foreground">
+                      {attraction.displayOrder}
+                    </td>
                     <td className="max-w-[250px] truncate px-4 py-3 font-medium">
                       {getLocalizedField(attraction, 'title', locale)}
                     </td>
@@ -338,9 +358,6 @@ export default function AdminDeVizitatPage() {
                       {attraction.isLocationOfMonth && (
                         <Badge variant="default">{t('attractions.locationOfMonth')}</Badge>
                       )}
-                    </td>
-                    <td className="whitespace-nowrap px-4 py-3 text-muted-foreground">
-                      {new Date(attraction.createdAt).toLocaleDateString()}
                     </td>
                     <td className="whitespace-nowrap px-4 py-3">
                       <div className="flex items-center gap-1">

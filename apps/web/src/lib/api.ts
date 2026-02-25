@@ -359,6 +359,7 @@ export interface AttractionDto {
   latitude: number;
   longitude: number;
   images: string[];
+  displayOrder: number;
   isLocationOfMonth: boolean;
   createdAt: string;
 }

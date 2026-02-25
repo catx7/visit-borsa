@@ -102,6 +102,7 @@ model TouristAttraction {
   latitude          Float
   longitude         Float
   images            String[]
+  displayOrder      Int      @default(0)
   isLocationOfMonth Boolean  @default(false)
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
