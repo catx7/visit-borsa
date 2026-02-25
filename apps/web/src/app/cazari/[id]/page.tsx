@@ -9,6 +9,10 @@ import {
   Users,
   DoorOpen,
   ArrowLeft,
+  UtensilsCrossed,
+  CreditCard,
+  Shield,
+  Sparkles,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -16,7 +20,9 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardContent } from '@/components/ui/card';
 import { ImageGallery } from '@/components/ui/image-gallery';
 import { RevealContactButton } from '@/components/ui/reveal-contact-button';
+import { WhatsAppBookingButton } from '@/components/ui/whatsapp-booking-button';
 import { AttractionCard } from '@/components/attraction/attraction-card';
+import { MapDisplayDynamic } from '@/components/map/map-display-dynamic';
 import { JsonLd } from '@/components/seo/json-ld';
 import { formatPrice, getLocalizedField } from '@/lib/utils';
 import * as api from '@/lib/api';
@@ -156,17 +162,87 @@ export default function CazareDetailPage() {
               </CardContent>
             </Card>
           )}
+
+          {/* Meal, Payment & Deposit */}
+          <Card>
+            <CardContent className="p-6 space-y-4">
+              <div className="flex items-center gap-2">
+                <UtensilsCrossed className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm font-medium">{t('properties.mealPolicy')}:</span>
+                <span className="text-sm text-muted-foreground">
+                  {t(`mealPolicies.${property.mealPolicy || 'NONE'}`)}
+                </span>
+              </div>
+
+              {property.paymentMethods && property.paymentMethods.length > 0 && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <CreditCard className="h-4 w-4 text-muted-foreground" />
+                    <span className="text-sm font-medium">{t('properties.paymentMethods')}:</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {property.paymentMethods.map((method: string) => (
+                      <Badge key={method} variant="secondary">
+                        {t(`paymentMethodLabels.${method}`, { defaultValue: method })}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="flex items-center gap-2">
+                <Shield className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm font-medium">{t('properties.deposit')}:</span>
+                <span className="text-sm text-muted-foreground">
+                  {property.depositRequired ? t('properties.depositYes') : t('properties.depositNo')}
+                </span>
+              </div>
+              {property.depositRequired && (property.depositPolicyRo || property.depositPolicyEn) && (
+                <p className="text-sm text-muted-foreground pl-6">
+                  {getLocalizedField(property, 'depositPolicy', i18n.language)}
+                </p>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Paid Extras */}
+          {property.paidExtras && property.paidExtras.length > 0 && (
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <Sparkles className="h-4 w-4 text-muted-foreground" />
+                  <h2 className="text-lg font-semibold">{t('properties.paidExtras')}</h2>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {property.paidExtras.map((extra: string) => (
+                    <Badge key={extra} variant="secondary">
+                      {t(`paidExtraLabels.${extra}`, { defaultValue: extra })}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
         </div>
 
         {/* Sidebar */}
         <div className="space-y-6">
           {/* Price Card */}
           <Card>
-            <CardContent className="p-6 text-center">
+            <CardContent className="p-6 text-center space-y-2">
               <div className="text-3xl font-bold text-primary">
                 {formatPrice(property.pricePerNight)}
               </div>
               <span className="text-sm text-muted-foreground">{t('properties.perNight')}</span>
+              {property.priceWholeUnit && (
+                <>
+                  <hr className="my-3 border-border" />
+                  <div className="text-2xl font-bold text-primary">
+                    {formatPrice(property.priceWholeUnit)}
+                  </div>
+                  <span className="text-sm text-muted-foreground">{t('properties.perNightWholeUnit')}</span>
+                </>
+              )}
             </CardContent>
           </Card>
 
@@ -198,11 +274,31 @@ export default function CazareDetailPage() {
                     />
                   )}
                 </div>
+                {property.owner.phone && (
+                  <>
+                    <hr className="my-4 border-border" />
+                    <h3 className="text-sm font-semibold mb-3">{t('whatsapp.title')}</h3>
+                    <WhatsAppBookingButton
+                      phone={property.owner.phone}
+                      propertyName={title}
+                      entityId={property.id}
+                      maxGuests={property.maxGuests}
+                    />
+                  </>
+                )}
               </CardContent>
             </Card>
           )}
         </div>
       </div>
+
+      {/* Map */}
+      {property.latitude && property.longitude && (
+        <section className="mt-12">
+          <h2 className="mb-4 text-2xl font-bold">{t('properties.viewOnMap')}</h2>
+          <MapDisplayDynamic latitude={property.latitude} longitude={property.longitude} />
+        </section>
+      )}
 
       {/* Nearby Attractions */}
       {nearbyAttractions && nearbyAttractions.length > 0 && (

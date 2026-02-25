@@ -33,4 +33,9 @@ export class FilterPropertyDto extends PaginationDto {
   @IsOptional()
   @IsString()
   search?: string;
+
+  @ApiPropertyOptional({ enum: ['room', 'whole_unit'] })
+  @IsOptional()
+  @IsString()
+  rentalType?: string;
 }

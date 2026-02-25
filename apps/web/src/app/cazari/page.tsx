@@ -23,6 +23,7 @@ export default function CazariPage() {
   const [type, setType] = useState(searchParams.get('type') ?? '');
   const [minPrice, setMinPrice] = useState(searchParams.get('minPrice') ?? '');
   const [maxPrice, setMaxPrice] = useState(searchParams.get('maxPrice') ?? '');
+  const [rentalType, setRentalType] = useState(searchParams.get('rentalType') ?? '');
   const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
 
   const filter: api.PropertyFilter = {
@@ -30,6 +31,7 @@ export default function CazariPage() {
     type: type || undefined,
     minPrice: minPrice ? Number(minPrice) : undefined,
     maxPrice: maxPrice ? Number(maxPrice) : undefined,
+    rentalType: rentalType || undefined,
     status: 'APPROVED',
     page,
     limit: 12,
@@ -46,19 +48,21 @@ export default function CazariPage() {
     if (type) params.set('type', type);
     if (minPrice) params.set('minPrice', minPrice);
     if (maxPrice) params.set('maxPrice', maxPrice);
+    if (rentalType) params.set('rentalType', rentalType);
     if (page > 1) params.set('page', String(page));
     router.replace(`/cazari?${params.toString()}`, { scroll: false });
-  }, [search, type, minPrice, maxPrice, page, router]);
+  }, [search, type, minPrice, maxPrice, rentalType, page, router]);
 
   const handleReset = () => {
     setSearch('');
     setType('');
     setMinPrice('');
     setMaxPrice('');
+    setRentalType('');
     setPage(1);
   };
 
-  const hasFilters = search || type || minPrice || maxPrice;
+  const hasFilters = search || type || minPrice || maxPrice || rentalType;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -70,7 +74,7 @@ export default function CazariPage() {
           <SlidersHorizontal className="h-4 w-4 text-muted-foreground" />
           <span className="font-medium text-sm">{t('properties.filters')}</span>
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
           <div className="relative lg:col-span-2">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
@@ -89,6 +93,14 @@ export default function CazariPage() {
             {PROPERTY_TYPES.map((pt) => (
               <option key={pt} value={pt}>{t(`propertyTypes.${pt}`)}</option>
             ))}
+          </Select>
+          <Select
+            value={rentalType}
+            onChange={(e) => { setRentalType(e.target.value); setPage(1); }}
+          >
+            <option value="">{t('properties.rentalAll')}</option>
+            <option value="room">{t('properties.rentalRoom')}</option>
+            <option value="whole_unit">{t('properties.rentalWholeUnit')}</option>
           </Select>
           <Input
             type="number"

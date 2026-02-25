@@ -54,7 +54,20 @@
     "location": "Locație",
     "description": "Descriere",
     "details": "Detalii",
-    "address": "Adresă"
+    "address": "Adresă",
+    "mealPolicy": "Masa",
+    "paymentMethods": "Metode de plată",
+    "deposit": "Avans la rezervări",
+    "depositYes": "Da",
+    "depositNo": "Nu",
+    "paidExtras": "Extra contra cost",
+    "wholeUnit": "Preț unitate integrală",
+    "perNightWholeUnit": "/ noapte (unitate integrală)",
+    "rentalType": "Tip închiriere",
+    "rentalAll": "Toate",
+    "rentalRoom": "Cameră",
+    "rentalWholeUnit": "Unitate integrală",
+    "viewOnMap": "Localizare pe hartă"
   },
   "propertyTypes": {
     "HOTEL": "Hotel",
@@ -70,6 +83,27 @@
     "DRAFT": "Ciornă",
     "PENDING": "În așteptare",
     "APPROVED": "Aprobat"
+  },
+  "mealPolicies": {
+    "NONE": "Nu oferă masă",
+    "INCLUDED": "Masă inclusă",
+    "EXTRA_COST": "Masă contra cost"
+  },
+  "paymentMethodLabels": {
+    "CASH": "Numerar",
+    "BANK_TRANSFER": "Transfer bancar",
+    "CARD": "Card bancar",
+    "ONLINE": "Plata online"
+  },
+  "paidExtraLabels": {
+    "hot_tub": "Ciubar",
+    "sauna": "Saună",
+    "pool": "Piscină",
+    "spa": "Spa",
+    "jacuzzi": "Jacuzzi",
+    "massage": "Masaj",
+    "gym": "Sală fitness",
+    "bicycle_rental": "Închiriere biciclete"
   },
   "amenityLabels": {
     "wifi": "WiFi",
@@ -275,6 +309,15 @@
     "rooms": "Număr camere",
     "maxGuests": "Număr maxim oaspeți",
     "amenities": "Facilități",
+    "mealPolicy": "Politica de masă",
+    "paymentMethods": "Metode de plată acceptate",
+    "depositRequired": "Se solicită avans",
+    "depositPolicy": "Politica de avans",
+    "depositPolicyRo": "Politica de avans (Română)",
+    "depositPolicyEn": "Politica de avans (Engleză)",
+    "priceWholeUnit": "Preț unitate integrală / noapte (RON)",
+    "priceWholeUnitHint": "Opțional — completați doar dacă oferiți închiriere integrală",
+    "paidExtras": "Extra contra cost",
     "uploadImages": "Încarcă imagini",
     "dragOrClick": "Trage fișiere aici sau click pentru a selecta",
     "step": "Pasul {{current}} din {{total}}",
@@ -499,5 +542,13 @@
     "servicii": "Servicii",
     "restaurante": "Restaurante",
     "explore": "Explorează"
+  },
+  "whatsapp": {
+    "title": "Rezervare WhatsApp",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "persons": "Număr persoane",
+    "sendMessage": "Trimite pe WhatsApp",
+    "messageTemplate": "Bună ziua! Doresc o rezervare la {{propertyName}}.\n\nCheck-in: {{checkIn}}\nCheck-out: {{checkOut}}\nNumăr persoane: {{persons}}\n\nTrimis prin visitborsa.ro"
   }
 }

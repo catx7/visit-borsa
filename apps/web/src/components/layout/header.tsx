@@ -20,14 +20,32 @@ import {
   Compass,
   Info,
   Mountain,
+  ChevronDown,
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export function Header() {
   const { t, i18n } = useTranslation();
   const { user, logout } = useAuth();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const userMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setUserMenuOpen(false);
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setUserMenuOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'ro' ? 'en' : 'ro';
@@ -89,32 +107,55 @@ export function Header() {
           </Button>
 
           {user ? (
-            <>
-              {user.role === 'ADMIN' && (
-                <Link href="/admin">
-                  <Button variant="ghost" size="sm" className="gap-1.5 rounded-lg">
-                    <Shield className="h-4 w-4" />
-                    {t('nav.admin')}
-                  </Button>
-                </Link>
+            <div className="relative" ref={userMenuRef}>
+              <button
+                onClick={() => setUserMenuOpen(!userMenuOpen)}
+                className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-200 cursor-pointer"
+              >
+                <User className="h-4 w-4" />
+                <span>{user.firstName ?? user.email}</span>
+                <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${userMenuOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {userMenuOpen && (
+                <div className="absolute right-0 mt-1 w-48 rounded-xl border border-border/60 bg-background shadow-lg py-1 z-50">
+                  {user.role === 'ADMIN' && (
+                    <Link
+                      href="/admin"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                      onClick={() => setUserMenuOpen(false)}
+                    >
+                      <Shield className="h-4 w-4" />
+                      {t('nav.admin')}
+                    </Link>
+                  )}
+                  <Link
+                    href="/dashboard"
+                    className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                    onClick={() => setUserMenuOpen(false)}
+                  >
+                    <LayoutDashboard className="h-4 w-4" />
+                    {t('nav.dashboard')}
+                  </Link>
+                  <Link
+                    href="/dashboard/profil"
+                    className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                    onClick={() => setUserMenuOpen(false)}
+                  >
+                    <User className="h-4 w-4" />
+                    {t('nav.profile')}
+                  </Link>
+                  <hr className="my-1 border-border" />
+                  <button
+                    onClick={() => { logout(); setUserMenuOpen(false); }}
+                    className="flex w-full items-center gap-2.5 px-4 py-2.5 text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors cursor-pointer"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    {t('nav.logout')}
+                  </button>
+                </div>
               )}
-              <Link href="/dashboard">
-                <Button variant="ghost" size="sm" className="gap-1.5 rounded-lg">
-                  <LayoutDashboard className="h-4 w-4" />
-                  {t('nav.dashboard')}
-                </Button>
-              </Link>
-              <Link href="/dashboard/profil">
-                <Button variant="ghost" size="sm" className="gap-1.5 rounded-lg">
-                  <User className="h-4 w-4" />
-                  {user.firstName ?? user.email}
-                </Button>
-              </Link>
-              <Button variant="ghost" size="sm" onClick={logout} className="gap-1.5 rounded-lg">
-                <LogOut className="h-4 w-4" />
-                {t('nav.logout')}
-              </Button>
-            </>
+            </div>
           ) : (
             <>
               <Link href="/login">

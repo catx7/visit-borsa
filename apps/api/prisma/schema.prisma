@@ -57,6 +57,12 @@ enum PriceRange {
   PREMIUM
 }
 
+enum MealPolicy {
+  NONE
+  INCLUDED
+  EXTRA_COST
+}
+
 enum EntityType {
   PROPERTY
   SERVICE
@@ -67,6 +73,7 @@ enum ContactType {
   PHONE
   EMAIL
   WEBSITE
+  WHATSAPP
 }
 
 model User {
@@ -118,6 +125,13 @@ model Property {
   amenities      String[]
   maxGuests      Int            @default(2)
   rooms          Int            @default(1)
+  mealPolicy     MealPolicy     @default(NONE)
+  paymentMethods String[]
+  depositRequired Boolean       @default(false)
+  depositPolicyRo String?
+  depositPolicyEn String?
+  priceWholeUnit Float?
+  paidExtras     String[]
   promotionOrder  Int?
   isLocationOfMonth Boolean      @default(false)
   isActive       Boolean        @default(true)

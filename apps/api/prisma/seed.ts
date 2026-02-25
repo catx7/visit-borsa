@@ -12,8 +12,14 @@ async function main() {
   await prisma.user.deleteMany();
 
   // --- Users (8: 1 admin + 7 clients) ---
-  const adminPassword = await hash('admin123', 12);
-  const clientPassword = await hash('client123', 12);
+  const adminPassword = await hash(
+    process.env.SEED_ADMIN_PASSWORD ?? 'changeme',
+    12,
+  );
+  const clientPassword = await hash(
+    process.env.SEED_CLIENT_PASSWORD ?? 'changeme',
+    12,
+  );
 
   const admin = await prisma.user.create({
     data: {
@@ -1097,8 +1103,10 @@ async function main() {
   console.log('All 7 property types covered: HOTEL, VILA, PENSIUNE, CABANA, APARTAMENT, CAMERA, CASA_VACANTA');
   console.log('All 20 service categories covered');
   console.log('All 3 price ranges covered: BUDGET, MODERATE, PREMIUM');
-  console.log('Admin: admin@visitborsa.ro / admin123');
-  console.log('Clients: ion/maria/gheorghe/elena/vasile/ana/mihai @example.com / client123');
+  console.log('Admin: admin@visitborsa.ro');
+  console.log(
+    'Clients: ion/maria/gheorghe/elena/vasile/ana/mihai @example.com',
+  );
 }
 
 main()

@@ -21,12 +21,17 @@ export class PropertiesService {
       where.status = filter.status;
     } else {
       where.status = 'APPROVED';
+    }
+    if (where.status === 'APPROVED') {
       where.isActive = true;
     }
     if (filter.minPrice !== undefined || filter.maxPrice !== undefined) {
       where.pricePerNight = {};
       if (filter.minPrice !== undefined) where.pricePerNight.gte = filter.minPrice;
       if (filter.maxPrice !== undefined) where.pricePerNight.lte = filter.maxPrice;
+    }
+    if (filter.rentalType === 'whole_unit') {
+      where.priceWholeUnit = { not: null };
     }
     if (filter.search) {
       where.OR = [

@@ -24,6 +24,10 @@ const AMENITIES = [
   'ski-access', 'breakfast', 'air-conditioning', 'bar', 'traditional-style',
 ];
 
+const MEAL_POLICIES = ['NONE', 'INCLUDED', 'EXTRA_COST'] as const;
+const PAYMENT_METHODS = ['CASH', 'BANK_TRANSFER', 'CARD', 'ONLINE'] as const;
+const PAID_EXTRAS = ['hot_tub', 'sauna', 'pool', 'spa', 'jacuzzi', 'massage', 'gym', 'bicycle_rental'] as const;
+
 export default function NewCazarePage() {
   const { t } = useTranslation();
   const router = useRouter();
@@ -40,6 +44,13 @@ export default function NewCazarePage() {
   const [rooms, setRooms] = useState('');
   const [maxGuests, setMaxGuests] = useState('');
   const [amenities, setAmenities] = useState<string[]>([]);
+  const [mealPolicy, setMealPolicy] = useState('NONE');
+  const [paymentMethods, setPaymentMethods] = useState<string[]>([]);
+  const [depositRequired, setDepositRequired] = useState(false);
+  const [depositPolicyRo, setDepositPolicyRo] = useState('');
+  const [depositPolicyEn, setDepositPolicyEn] = useState('');
+  const [priceWholeUnit, setPriceWholeUnit] = useState('');
+  const [paidExtras, setPaidExtras] = useState<string[]>([]);
   const [images, setImages] = useState<string[]>([]);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
@@ -66,6 +77,13 @@ export default function NewCazarePage() {
         rooms: parseInt(rooms, 10),
         maxGuests: parseInt(maxGuests, 10),
         amenities,
+        mealPolicy,
+        paymentMethods,
+        depositRequired,
+        depositPolicyRo: depositPolicyRo || undefined,
+        depositPolicyEn: depositPolicyEn || undefined,
+        priceWholeUnit: priceWholeUnit ? parseFloat(priceWholeUnit) : undefined,
+        paidExtras,
         images,
       }),
     onSuccess: () => {
@@ -84,6 +102,18 @@ export default function NewCazarePage() {
   const toggleAmenity = (amenity: string) => {
     setAmenities((prev) =>
       prev.includes(amenity) ? prev.filter((a) => a !== amenity) : [...prev, amenity],
+    );
+  };
+
+  const togglePaymentMethod = (method: string) => {
+    setPaymentMethods((prev) =>
+      prev.includes(method) ? prev.filter((m) => m !== method) : [...prev, method],
+    );
+  };
+
+  const togglePaidExtra = (extra: string) => {
+    setPaidExtras((prev) =>
+      prev.includes(extra) ? prev.filter((e) => e !== extra) : [...prev, extra],
     );
   };
 
@@ -239,7 +269,7 @@ export default function NewCazarePage() {
             <CardTitle className="text-lg">{t('propertyForm.details')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <div className="space-y-2">
                 <label htmlFor="pricePerNight" className="text-sm font-medium">
                   {t('propertyForm.pricePerNight')}
@@ -251,6 +281,20 @@ export default function NewCazarePage() {
                   value={pricePerNight}
                   onChange={(e) => setPricePerNight(e.target.value)}
                   required
+                  disabled={createMutation.isPending}
+                />
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="priceWholeUnit" className="text-sm font-medium">
+                  {t('propertyForm.priceWholeUnit')}
+                </label>
+                <Input
+                  id="priceWholeUnit"
+                  type="number"
+                  min="0"
+                  value={priceWholeUnit}
+                  onChange={(e) => setPriceWholeUnit(e.target.value)}
+                  placeholder={t('propertyForm.priceWholeUnitHint')}
                   disabled={createMutation.isPending}
                 />
               </div>
@@ -300,6 +344,108 @@ export default function NewCazarePage() {
                       disabled={createMutation.isPending}
                     />
                     {t(`amenityLabels.${amenity}`)}
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label htmlFor="mealPolicy" className="text-sm font-medium">
+                {t('propertyForm.mealPolicy')}
+              </label>
+              <Select
+                id="mealPolicy"
+                value={mealPolicy}
+                onChange={(e) => setMealPolicy(e.target.value)}
+                disabled={createMutation.isPending}
+              >
+                {MEAL_POLICIES.map((mp) => (
+                  <option key={mp} value={mp}>
+                    {t(`mealPolicies.${mp}`)}
+                  </option>
+                ))}
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium">{t('propertyForm.paymentMethods')}</label>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                {PAYMENT_METHODS.map((method) => (
+                  <label
+                    key={method}
+                    className="flex items-center gap-2 rounded-md border border-border p-2 text-sm hover:bg-accent cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={paymentMethods.includes(method)}
+                      onChange={() => togglePaymentMethod(method)}
+                      className="rounded"
+                      disabled={createMutation.isPending}
+                    />
+                    {t(`paymentMethodLabels.${method}`)}
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="flex items-center gap-2 text-sm font-medium cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={depositRequired}
+                  onChange={(e) => setDepositRequired(e.target.checked)}
+                  className="rounded"
+                  disabled={createMutation.isPending}
+                />
+                {t('propertyForm.depositRequired')}
+              </label>
+              {depositRequired && (
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mt-2">
+                  <div className="space-y-1">
+                    <label htmlFor="depositPolicyRo" className="text-xs text-muted-foreground">
+                      {t('propertyForm.depositPolicy')} (RO)
+                    </label>
+                    <Textarea
+                      id="depositPolicyRo"
+                      value={depositPolicyRo}
+                      onChange={(e) => setDepositPolicyRo(e.target.value)}
+                      rows={2}
+                      placeholder={t('propertyForm.depositPolicyHint')}
+                      disabled={createMutation.isPending}
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label htmlFor="depositPolicyEn" className="text-xs text-muted-foreground">
+                      {t('propertyForm.depositPolicy')} (EN)
+                    </label>
+                    <Textarea
+                      id="depositPolicyEn"
+                      value={depositPolicyEn}
+                      onChange={(e) => setDepositPolicyEn(e.target.value)}
+                      rows={2}
+                      disabled={createMutation.isPending}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium">{t('propertyForm.paidExtras')}</label>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                {PAID_EXTRAS.map((extra) => (
+                  <label
+                    key={extra}
+                    className="flex items-center gap-2 rounded-md border border-border p-2 text-sm hover:bg-accent cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={paidExtras.includes(extra)}
+                      onChange={() => togglePaidExtra(extra)}
+                      className="rounded"
+                      disabled={createMutation.isPending}
+                    />
+                    {t(`paidExtraLabels.${extra}`)}
                   </label>
                 ))}
               </div>

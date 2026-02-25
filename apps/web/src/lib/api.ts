@@ -104,6 +104,13 @@ export interface PropertyDto {
   amenities: string[];
   maxGuests: number;
   rooms: number;
+  mealPolicy: string;
+  paymentMethods: string[];
+  depositRequired: boolean;
+  depositPolicyRo: string | null;
+  depositPolicyEn: string | null;
+  priceWholeUnit: number | null;
+  paidExtras: string[];
   promotionOrder: number | null;
   owner?: { id: string; email: string; firstName: string | null; lastName: string | null; phone: string | null };
   createdAt: string;
@@ -124,6 +131,7 @@ export interface PropertyFilter {
   maxPrice?: number;
   status?: string;
   search?: string;
+  rentalType?: string;
   page?: number;
   limit?: number;
 }
@@ -416,7 +424,7 @@ export async function uploadImages(token: string, files: File[]): Promise<string
 export function trackContactClick(data: {
   entityType: 'PROPERTY' | 'SERVICE' | 'RESTAURANT';
   entityId: string;
-  contactType: 'PHONE' | 'EMAIL' | 'WEBSITE';
+  contactType: 'PHONE' | 'EMAIL' | 'WEBSITE' | 'WHATSAPP';
 }) {
   return fetchApi<{ id: string }>('/contact-clicks', {
     method: 'POST',

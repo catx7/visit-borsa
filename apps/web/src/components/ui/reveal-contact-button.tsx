@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { Phone, Mail, Globe, Eye } from 'lucide-react';
+import { Phone, Mail, Globe, Eye, MessageCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import * as api from '@/lib/api';
 
-type ContactType = 'PHONE' | 'EMAIL' | 'WEBSITE';
+type ContactType = 'PHONE' | 'EMAIL' | 'WEBSITE' | 'WHATSAPP';
 type EntityType = 'PROPERTY' | 'SERVICE' | 'RESTAURANT';
 
 interface RevealContactButtonProps {
@@ -28,16 +28,18 @@ function maskValue(value: string, contactType: ContactType): string {
   return '***';
 }
 
-const iconMap = {
+const iconMap: Record<ContactType, typeof Phone> = {
   PHONE: Phone,
   EMAIL: Mail,
   WEBSITE: Globe,
+  WHATSAPP: MessageCircle,
 };
 
-const hrefMap = {
-  PHONE: (v: string) => `tel:${v}`,
-  EMAIL: (v: string) => `mailto:${v}`,
-  WEBSITE: (v: string) => v,
+const hrefMap: Record<ContactType, (v: string) => string> = {
+  PHONE: (v) => `tel:${v}`,
+  EMAIL: (v) => `mailto:${v}`,
+  WEBSITE: (v) => v,
+  WHATSAPP: (v) => `https://wa.me/${v.replace(/[^\d]/g, '')}`,
 };
 
 export function RevealContactButton({ value, contactType, entityType, entityId }: RevealContactButtonProps) {

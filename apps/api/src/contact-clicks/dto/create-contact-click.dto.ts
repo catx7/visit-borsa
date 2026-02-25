@@ -8,6 +8,11 @@ export class CreateContactClickDto {
   @IsString()
   entityId: string;
 
-  @IsEnum({ PHONE: 'PHONE', EMAIL: 'EMAIL', WEBSITE: 'WEBSITE' })
+  @IsEnum({
+    PHONE: 'PHONE',
+    EMAIL: 'EMAIL',
+    WEBSITE: 'WEBSITE',
+    WHATSAPP: 'WHATSAPP',
+  })
   contactType: ContactType;
 }

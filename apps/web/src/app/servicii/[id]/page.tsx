@@ -16,6 +16,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { ImageGallery } from '@/components/ui/image-gallery';
 import { RevealContactButton } from '@/components/ui/reveal-contact-button';
 import { JsonLd } from '@/components/seo/json-ld';
+import { MapDisplayDynamic } from '@/components/map/map-display-dynamic';
 import { getLocalizedField } from '@/lib/utils';
 import * as api from '@/lib/api';
 
@@ -162,6 +163,14 @@ export default function ServiceDetailPage() {
           </Card>
         </div>
       </div>
+
+      {/* Map */}
+      {service.latitude && service.longitude && (
+        <section className="mt-12">
+          <h2 className="mb-4 text-2xl font-bold">{t('properties.viewOnMap')}</h2>
+          <MapDisplayDynamic latitude={service.latitude} longitude={service.longitude} />
+        </section>
+      )}
     </div>
   );
 }

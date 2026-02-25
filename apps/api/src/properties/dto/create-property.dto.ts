@@ -1,8 +1,10 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import type { MealPolicy } from '@prisma/client';
 import { PropertyType } from '@prisma/client';
 import {
   ArrayMaxSize,
   IsArray,
+  IsBoolean,
   IsEnum,
   IsInt,
   IsNumber,
@@ -79,4 +81,42 @@ export class CreatePropertyDto {
   @IsInt()
   @Min(1)
   rooms: number = 1;
+
+  @ApiPropertyOptional({ enum: ['NONE', 'INCLUDED', 'EXTRA_COST'] })
+  @IsOptional()
+  @IsEnum({ NONE: 'NONE', INCLUDED: 'INCLUDED', EXTRA_COST: 'EXTRA_COST' })
+  mealPolicy: MealPolicy = 'NONE' as MealPolicy;
+
+  @ApiPropertyOptional({ type: [String] })
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  paymentMethods: string[] = [];
+
+  @ApiPropertyOptional({ example: false })
+  @IsOptional()
+  @IsBoolean()
+  depositRequired: boolean = false;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
+  depositPolicyRo?: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
+  depositPolicyEn?: string;
+
+  @ApiPropertyOptional({ example: 800 })
+  @IsOptional()
+  @IsNumber()
+  @Min(0)
+  priceWholeUnit?: number;
+
+  @ApiPropertyOptional({ type: [String] })
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  paidExtras: string[] = [];
 }

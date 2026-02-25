@@ -20,6 +20,8 @@ export class ServicesService {
       where.status = filter.status;
     } else {
       where.status = 'APPROVED';
+    }
+    if (where.status === 'APPROVED') {
       where.isActive = true;
     }
     if (filter.category) where.category = filter.category;

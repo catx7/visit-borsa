@@ -54,7 +54,20 @@
     "location": "Location",
     "description": "Description",
     "details": "Details",
-    "address": "Address"
+    "address": "Address",
+    "mealPolicy": "Meals",
+    "paymentMethods": "Payment Methods",
+    "deposit": "Booking Deposit",
+    "depositYes": "Yes",
+    "depositNo": "No",
+    "paidExtras": "Paid Extras",
+    "wholeUnit": "Whole Unit Price",
+    "perNightWholeUnit": "/ night (whole unit)",
+    "rentalType": "Rental Type",
+    "rentalAll": "All",
+    "rentalRoom": "Room",
+    "rentalWholeUnit": "Whole Unit",
+    "viewOnMap": "View on Map"
   },
   "propertyTypes": {
     "HOTEL": "Hotel",
@@ -70,6 +83,27 @@
     "DRAFT": "Draft",
     "PENDING": "Pending",
     "APPROVED": "Approved"
+  },
+  "mealPolicies": {
+    "NONE": "No meals",
+    "INCLUDED": "Meals included",
+    "EXTRA_COST": "Meals at extra cost"
+  },
+  "paymentMethodLabels": {
+    "CASH": "Cash",
+    "BANK_TRANSFER": "Bank transfer",
+    "CARD": "Credit/debit card",
+    "ONLINE": "Online payment"
+  },
+  "paidExtraLabels": {
+    "hot_tub": "Hot tub",
+    "sauna": "Sauna",
+    "pool": "Swimming pool",
+    "spa": "Spa",
+    "jacuzzi": "Jacuzzi",
+    "massage": "Massage",
+    "gym": "Fitness room",
+    "bicycle_rental": "Bicycle rental"
   },
   "amenityLabels": {
     "wifi": "WiFi",
@@ -275,6 +309,15 @@
     "rooms": "Number of rooms",
     "maxGuests": "Maximum guests",
     "amenities": "Amenities",
+    "mealPolicy": "Meal policy",
+    "paymentMethods": "Accepted payment methods",
+    "depositRequired": "Deposit required",
+    "depositPolicy": "Deposit policy",
+    "depositPolicyRo": "Deposit policy (Romanian)",
+    "depositPolicyEn": "Deposit policy (English)",
+    "priceWholeUnit": "Whole unit price / night (RON)",
+    "priceWholeUnitHint": "Optional — fill in only if you offer whole unit rental",
+    "paidExtras": "Paid extras",
     "uploadImages": "Upload images",
     "dragOrClick": "Drag files here or click to select",
     "step": "Step {{current}} of {{total}}",
@@ -499,5 +542,13 @@
     "servicii": "Services",
     "restaurante": "Restaurants",
     "explore": "Explore"
+  },
+  "whatsapp": {
+    "title": "WhatsApp Booking",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "persons": "Number of guests",
+    "sendMessage": "Send via WhatsApp",
+    "messageTemplate": "Hello! I would like to make a reservation at {{propertyName}}.\n\nCheck-in: {{checkIn}}\nCheck-out: {{checkOut}}\nNumber of guests: {{persons}}\n\nSent via visitborsa.ro"
   }
 }
