@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   ForbiddenException,
   Injectable,
   NotFoundException,
@@ -43,7 +44,18 @@ export class ServicesService {
         where,
         skip,
         take: limit,
-        orderBy: { createdAt: 'desc' },
+        orderBy: (() => {
+          const orderBy: any[] = [
+            { promotionOrder: { sort: 'asc', nulls: 'last' } },
+          ];
+          const sortOrder = filter.sortOrder === 'asc' ? 'asc' : 'desc';
+          if (filter.sortBy === 'name') {
+            orderBy.push({ titleRo: sortOrder });
+          } else {
+            orderBy.push({ createdAt: 'desc' });
+          }
+          return orderBy;
+        })(),
       }),
       this.prisma.service.count({ where }),
     ]);
@@ -121,6 +133,9 @@ export class ServicesService {
     }
     if (service.ownerId !== ownerId) {
       throw new ForbiddenException('You can only edit your own services');
+    }
+    if (dto.images !== undefined && dto.images.length === 0) {
+      throw new BadRequestException('At least one image is required');
     }
 
     return this.prisma.service.update({

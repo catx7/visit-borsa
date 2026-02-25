@@ -43,6 +43,7 @@
     "priceRange": "Price range",
     "minPrice": "Min price",
     "maxPrice": "Max price",
+    "premium": "Premium",
     "search": "Search",
     "reset": "Reset filters",
     "perNight": "/ night",
@@ -328,7 +329,8 @@
     "createError": "Failed to create listing",
     "updateError": "Failed to update listing",
     "notOwner": "You are not the owner of this listing",
-    "notFound": "Listing not found"
+    "notFound": "Listing not found",
+    "minImagesError": "At least one image is required"
   },
   "serviceForm": {
     "selectCategory": "Select category",
@@ -542,6 +544,22 @@
     "servicii": "Services",
     "restaurante": "Restaurants",
     "explore": "Explore"
+  },
+  "sort": {
+    "default": "Sort: Default",
+    "priceAsc": "Price: Low to High",
+    "priceDesc": "Price: High to Low",
+    "nameAsc": "Name: A-Z",
+    "nameDesc": "Name: Z-A",
+    "capacityAsc": "Capacity: Low to High",
+    "capacityDesc": "Capacity: High to Low"
+  },
+  "ownerPreview": {
+    "pendingTitle": "Your listing is pending approval",
+    "pendingDescription": "This listing can be previewed here, but is not visible to the public until approved by an administrator.",
+    "previewMessage": "Your listing can be previewed but requires approval from an administrator.",
+    "previewLink": "Preview",
+    "backToDashboard": "Back to dashboard"
   },
   "whatsapp": {
     "title": "WhatsApp Booking",

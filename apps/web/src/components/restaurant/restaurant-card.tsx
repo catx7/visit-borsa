@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import { Clock, UtensilsCrossed } from 'lucide-react';
+import { Clock, Crown, UtensilsCrossed } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { getLocalizedField } from '@/lib/utils';
 import type { RestaurantDto } from '@/lib/api';
@@ -42,6 +42,12 @@ export function RestaurantCard({ restaurant }: { restaurant: RestaurantDto }) {
           <span className={`absolute left-3 top-3 rounded-full backdrop-blur-sm px-3 py-1 text-xs font-semibold shadow-sm ${badgeColor}`}>
             {priceLabel}
           </span>
+          {restaurant.promotionOrder != null && (
+            <span className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-amber-400/95 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-amber-950 shadow-sm">
+              <Crown className="h-3 w-3" />
+              {t('properties.premium')}
+            </span>
+          )}
         </div>
         <CardContent className="p-5">
           <h3 className="line-clamp-1 font-semibold text-lg tracking-tight">{title}</h3>

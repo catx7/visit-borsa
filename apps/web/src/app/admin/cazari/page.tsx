@@ -70,6 +70,8 @@ export default function AdminCazariPage() {
     mutationFn: (id: string) => api.togglePropertyActive(token!, id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin-properties'] });
+      queryClient.invalidateQueries({ queryKey: ['properties'] });
+      queryClient.invalidateQueries({ queryKey: ['promoted-properties'] });
     },
   });
 

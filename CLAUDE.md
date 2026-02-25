@@ -85,9 +85,9 @@ Core entities: User → Property/Service/Restaurant, TouristAttraction. Properti
 Translation files at `apps/web/src/locales/{ro,en}/common.json`. Use `getLocalizedField(item, 'fieldName', locale)` for bilingual DB fields.
 
 ### Test Credentials (after seed)
-- Admin: `admin@visitborsa.ro` / `admin123`
-- Client: `ion@example.com` / `client123`
-- Client: `maria@example.com` / `client123`
+- Admin: `admin@visitborsa.ro` / ``
+- Client: `ion@example.com` / ``
+- Client: `maria@example.com` / ``
 
 ### Key Patterns
 - API proxy: Next.js rewrites `/api/*` → `localhost:3001/api/*`

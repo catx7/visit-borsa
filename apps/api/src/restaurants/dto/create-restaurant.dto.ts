@@ -2,6 +2,7 @@ import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { PriceRange } from '@prisma/client';
 import {
   ArrayMaxSize,
+  ArrayMinSize,
   IsArray,
   IsEmail,
   IsEnum,
@@ -42,12 +43,12 @@ export class CreateRestaurantDto {
   @IsString()
   cuisineEn?: string;
 
-  @ApiPropertyOptional({ type: [String] })
-  @IsOptional()
+  @ApiProperty({ type: [String] })
   @IsArray()
+  @ArrayMinSize(1)
   @ArrayMaxSize(8)
   @IsString({ each: true })
-  images: string[] = [];
+  images: string[];
 
   @ApiPropertyOptional({ example: '+40 721 000 000' })
   @IsOptional()

@@ -18,12 +18,14 @@ import { RevealContactButton } from '@/components/ui/reveal-contact-button';
 import { JsonLd } from '@/components/seo/json-ld';
 import { MapDisplayDynamic } from '@/components/map/map-display-dynamic';
 import { getLocalizedField } from '@/lib/utils';
+import { useAuth } from '@/lib/auth-context';
 import * as api from '@/lib/api';
 
 export default function ServiceDetailPage() {
   const { t, i18n } = useTranslation();
   const params = useParams();
   const id = params.id as string;
+  const { user } = useAuth();
   const { data: service, isLoading, isError } = useQuery({
     queryKey: ['service', id],
     queryFn: () => api.getServiceById(id),
@@ -48,7 +50,10 @@ export default function ServiceDetailPage() {
     );
   }
 
-  if (isError || !service || service.status !== 'APPROVED' || !service.isActive) {
+  const isOwner = user && service && user.id === service.ownerId;
+  const isApproved = service?.status === 'APPROVED' && service?.isActive;
+
+  if (isError || !service || (!isApproved && !isOwner)) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
         <p className="text-muted-foreground">{t('common.error')}</p>
@@ -79,6 +84,14 @@ export default function ServiceDetailPage() {
         image: images[0],
         url: `https://visitborsa.ro/servicii/${service.id}`,
       }} />
+
+      {/* Owner preview banner */}
+      {isOwner && !isApproved && (
+        <div className="mb-6 rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm text-amber-800">
+          <p className="font-semibold">{t('ownerPreview.pendingTitle')}</p>
+          <p className="mt-1">{t('ownerPreview.pendingDescription')}</p>
+        </div>
+      )}
 
       {/* Back link */}
       <Link href="/servicii" className="mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">

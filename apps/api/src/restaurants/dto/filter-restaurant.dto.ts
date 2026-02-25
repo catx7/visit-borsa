@@ -1,6 +1,6 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { PriceRange, PropertyStatus } from '@prisma/client';
-import { IsEnum, IsOptional, IsString } from 'class-validator';
+import { IsEnum, IsIn, IsOptional, IsString } from 'class-validator';
 import { PaginationDto } from '../../common/pagination.dto';
 
 export class FilterRestaurantDto extends PaginationDto {
@@ -18,4 +18,14 @@ export class FilterRestaurantDto extends PaginationDto {
   @IsOptional()
   @IsString()
   search?: string;
+
+  @ApiPropertyOptional({ enum: ['name', 'createdAt'] })
+  @IsOptional()
+  @IsIn(['name', 'createdAt'])
+  sortBy?: string;
+
+  @ApiPropertyOptional({ enum: ['asc', 'desc'] })
+  @IsOptional()
+  @IsIn(['asc', 'desc'])
+  sortOrder?: string;
 }

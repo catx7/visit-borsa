@@ -127,11 +127,11 @@ export interface PaginatedResponse<T> {
 
 export interface PropertyFilter {
   type?: string;
-  minPrice?: number;
-  maxPrice?: number;
   status?: string;
   search?: string;
   rentalType?: string;
+  sortBy?: string;
+  sortOrder?: string;
   page?: number;
   limit?: number;
 }
@@ -209,6 +209,7 @@ export interface ServiceDto {
   ownerId: string;
   status: 'DRAFT' | 'PENDING' | 'APPROVED';
   isActive: boolean;
+  promotionOrder: number | null;
   owner?: { id: string; email: string; firstName: string | null; lastName: string | null };
   createdAt: string;
   updatedAt: string;
@@ -218,6 +219,8 @@ export interface ServiceFilter {
   category?: string;
   status?: string;
   search?: string;
+  sortBy?: string;
+  sortOrder?: string;
   page?: number;
   limit?: number;
 }
@@ -286,6 +289,7 @@ export interface RestaurantDto {
   ownerId: string;
   status: 'DRAFT' | 'PENDING' | 'APPROVED';
   isActive: boolean;
+  promotionOrder: number | null;
   owner?: { id: string; email: string; firstName: string | null; lastName: string | null };
   createdAt: string;
   updatedAt: string;
@@ -295,6 +299,8 @@ export interface RestaurantFilter {
   priceRange?: string;
   status?: string;
   search?: string;
+  sortBy?: string;
+  sortOrder?: string;
   page?: number;
   limit?: number;
 }

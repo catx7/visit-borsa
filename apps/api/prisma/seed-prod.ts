@@ -223,7 +223,6 @@ async function main() {
 
   console.log('Production seed completed successfully!');
   console.log('Created: 1 admin user, 14 tourist attractions');
-  console.log('Admin: admin@visitborsa.ro / V1s1tB0rs@2025!');
 }
 
 main()

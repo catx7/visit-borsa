@@ -2,9 +2,10 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { useMutation } from '@tanstack/react-query';
-import { Loader2, Upload, X } from 'lucide-react';
+import { Loader2, Upload, X, Eye, ArrowLeft } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
 import * as api from '@/lib/api';
 import { ApiError } from '@/lib/api';
@@ -54,7 +55,7 @@ export default function NewCazarePage() {
   const [images, setImages] = useState<string[]>([]);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [createdId, setCreatedId] = useState<string | null>(null);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -86,9 +87,8 @@ export default function NewCazarePage() {
         paidExtras,
         images,
       }),
-    onSuccess: () => {
-      setSuccess(t('propertyForm.created'));
-      setTimeout(() => router.push('/dashboard'), 1500);
+    onSuccess: (property) => {
+      setCreatedId(property.id);
     },
     onError: (err) => {
       if (err instanceof ApiError) {
@@ -147,7 +147,10 @@ export default function NewCazarePage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    setSuccess('');
+    if (images.length === 0) {
+      setError(t('propertyForm.minImagesError'));
+      return;
+    }
     createMutation.mutate();
   };
 
@@ -162,6 +165,36 @@ export default function NewCazarePage() {
 
   if (!user) return null;
 
+  if (createdId) {
+    return (
+      <div className="mx-auto max-w-lg px-4 py-16 sm:px-6 lg:px-8">
+        <Card>
+          <CardContent className="p-8 text-center space-y-4">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+              <Eye className="h-6 w-6 text-green-600" />
+            </div>
+            <h2 className="text-xl font-semibold">{t('ownerPreview.pendingTitle')}</h2>
+            <p className="text-sm text-muted-foreground">{t('ownerPreview.previewMessage')}</p>
+            <div className="flex flex-col gap-3 pt-2">
+              <Link href={`/cazari/${createdId}`}>
+                <Button className="w-full">
+                  <Eye className="mr-2 h-4 w-4" />
+                  {t('ownerPreview.previewLink')}
+                </Button>
+              </Link>
+              <Link href="/dashboard">
+                <Button variant="outline" className="w-full">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  {t('ownerPreview.backToDashboard')}
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8">
       <h1 className="mb-8 text-3xl font-bold">{t('dashboard.addCazare')}</h1>
@@ -169,11 +202,6 @@ export default function NewCazarePage() {
       {error && (
         <div className="mb-4 rounded-md bg-destructive/10 p-3 text-sm text-destructive">
           {error}
-        </div>
-      )}
-      {success && (
-        <div className="mb-4 rounded-md bg-green-50 p-3 text-sm text-green-700">
-          {success}
         </div>
       )}
 

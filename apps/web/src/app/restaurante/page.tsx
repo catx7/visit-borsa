@@ -21,11 +21,16 @@ export default function RestaurantePage() {
 
   const [search, setSearch] = useState(searchParams.get('search') ?? '');
   const [priceRange, setPriceRange] = useState(searchParams.get('priceRange') ?? '');
+  const [sort, setSort] = useState(searchParams.get('sort') ?? '');
   const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
+
+  const [sortBy, sortOrder] = sort ? sort.split('_') : [undefined, undefined];
 
   const filter: api.RestaurantFilter = {
     search: search || undefined,
     priceRange: priceRange || undefined,
+    sortBy,
+    sortOrder,
     status: 'APPROVED',
     page,
     limit: 12,
@@ -40,17 +45,19 @@ export default function RestaurantePage() {
     const params = new URLSearchParams();
     if (search) params.set('search', search);
     if (priceRange) params.set('priceRange', priceRange);
+    if (sort) params.set('sort', sort);
     if (page > 1) params.set('page', String(page));
     router.replace(`/restaurante?${params.toString()}`, { scroll: false });
-  }, [search, priceRange, page, router]);
+  }, [search, priceRange, sort, page, router]);
 
   const handleReset = () => {
     setSearch('');
     setPriceRange('');
+    setSort('');
     setPage(1);
   };
 
-  const hasFilters = search || priceRange;
+  const hasFilters = search || priceRange || sort;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -62,7 +69,7 @@ export default function RestaurantePage() {
           <SlidersHorizontal className="h-4 w-4 text-muted-foreground" />
           <span className="font-medium text-sm">{t('properties.filters')}</span>
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
@@ -81,6 +88,14 @@ export default function RestaurantePage() {
             {PRICE_RANGES.map((pr) => (
               <option key={pr} value={pr}>{t(`priceRanges.${pr}`)}</option>
             ))}
+          </Select>
+          <Select
+            value={sort}
+            onChange={(e) => { setSort(e.target.value); setPage(1); }}
+          >
+            <option value="">{t('sort.default')}</option>
+            <option value="name_asc">{t('sort.nameAsc')}</option>
+            <option value="name_desc">{t('sort.nameDesc')}</option>
           </Select>
         </div>
         {hasFilters && (

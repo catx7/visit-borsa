@@ -141,6 +141,10 @@ export default function EditRestaurantePage() {
     e.preventDefault();
     setError('');
     setSuccess('');
+    if (images.length === 0) {
+      setError(t('propertyForm.minImagesError'));
+      return;
+    }
     updateMutation.mutate();
   };
 

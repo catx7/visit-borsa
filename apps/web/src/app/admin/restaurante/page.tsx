@@ -73,6 +73,8 @@ export default function AdminRestaurantePage() {
     mutationFn: (id: string) => api.toggleRestaurantActive(token!, id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin-restaurants'] });
+      queryClient.invalidateQueries({ queryKey: ['restaurants'] });
+      queryClient.invalidateQueries({ queryKey: ['promoted-restaurants'] });
     },
   });
 

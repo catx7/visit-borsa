@@ -43,6 +43,7 @@
     "priceRange": "Interval de preț",
     "minPrice": "Preț minim",
     "maxPrice": "Preț maxim",
+    "premium": "Premium",
     "search": "Caută",
     "reset": "Resetează filtrele",
     "perNight": "/ noapte",
@@ -328,7 +329,8 @@
     "createError": "Crearea a eșuat",
     "updateError": "Actualizarea a eșuat",
     "notOwner": "Nu ești proprietarul acestei listări",
-    "notFound": "Listarea nu a fost găsită"
+    "notFound": "Listarea nu a fost găsită",
+    "minImagesError": "Este necesară cel puțin o imagine"
   },
   "serviceForm": {
     "selectCategory": "Selectează categoria",
@@ -542,6 +544,22 @@
     "servicii": "Servicii",
     "restaurante": "Restaurante",
     "explore": "Explorează"
+  },
+  "sort": {
+    "default": "Sortare: Implicit",
+    "priceAsc": "Preț: crescător",
+    "priceDesc": "Preț: descrescător",
+    "nameAsc": "Nume: A-Z",
+    "nameDesc": "Nume: Z-A",
+    "capacityAsc": "Capacitate: crescător",
+    "capacityDesc": "Capacitate: descrescător"
+  },
+  "ownerPreview": {
+    "pendingTitle": "Listarea dvs. este în curs de aprobare",
+    "pendingDescription": "Aceasta poate fi previzualizată aici, dar nu este vizibilă publicului până la aprobare de către administrator.",
+    "previewMessage": "Listarea dvs. poate fi previzualizată, dar necesită aprobare de la administrator.",
+    "previewLink": "Previzualizare",
+    "backToDashboard": "Înapoi la panou"
   },
   "whatsapp": {
     "title": "Rezervare WhatsApp",

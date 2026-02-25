@@ -193,6 +193,10 @@ export default function EditCazarePage() {
     e.preventDefault();
     setError('');
     setSuccess('');
+    if (images.length === 0) {
+      setError(t('propertyForm.minImagesError'));
+      return;
+    }
     updateMutation.mutate();
   };
 

@@ -60,6 +60,8 @@ export default function AdminServiciiPage() {
     mutationFn: (id: string) => api.toggleServiceActive(token!, id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin-services'] });
+      queryClient.invalidateQueries({ queryKey: ['services'] });
+      queryClient.invalidateQueries({ queryKey: ['promoted-services'] });
     },
   });
 

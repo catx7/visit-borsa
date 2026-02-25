@@ -21,17 +21,18 @@ export default function CazariPage() {
 
   const [search, setSearch] = useState(searchParams.get('search') ?? '');
   const [type, setType] = useState(searchParams.get('type') ?? '');
-  const [minPrice, setMinPrice] = useState(searchParams.get('minPrice') ?? '');
-  const [maxPrice, setMaxPrice] = useState(searchParams.get('maxPrice') ?? '');
   const [rentalType, setRentalType] = useState(searchParams.get('rentalType') ?? '');
+  const [sort, setSort] = useState(searchParams.get('sort') ?? '');
   const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
+
+  const [sortBy, sortOrder] = sort ? sort.split('_') : [undefined, undefined];
 
   const filter: api.PropertyFilter = {
     search: search || undefined,
     type: type || undefined,
-    minPrice: minPrice ? Number(minPrice) : undefined,
-    maxPrice: maxPrice ? Number(maxPrice) : undefined,
     rentalType: rentalType || undefined,
+    sortBy,
+    sortOrder,
     status: 'APPROVED',
     page,
     limit: 12,
@@ -46,23 +47,21 @@ export default function CazariPage() {
     const params = new URLSearchParams();
     if (search) params.set('search', search);
     if (type) params.set('type', type);
-    if (minPrice) params.set('minPrice', minPrice);
-    if (maxPrice) params.set('maxPrice', maxPrice);
     if (rentalType) params.set('rentalType', rentalType);
+    if (sort) params.set('sort', sort);
     if (page > 1) params.set('page', String(page));
     router.replace(`/cazari?${params.toString()}`, { scroll: false });
-  }, [search, type, minPrice, maxPrice, rentalType, page, router]);
+  }, [search, type, rentalType, sort, page, router]);
 
   const handleReset = () => {
     setSearch('');
     setType('');
-    setMinPrice('');
-    setMaxPrice('');
     setRentalType('');
+    setSort('');
     setPage(1);
   };
 
-  const hasFilters = search || type || minPrice || maxPrice || rentalType;
+  const hasFilters = search || type || rentalType || sort;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -74,7 +73,7 @@ export default function CazariPage() {
           <SlidersHorizontal className="h-4 w-4 text-muted-foreground" />
           <span className="font-medium text-sm">{t('properties.filters')}</span>
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
           <div className="relative lg:col-span-2">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
@@ -102,20 +101,18 @@ export default function CazariPage() {
             <option value="room">{t('properties.rentalRoom')}</option>
             <option value="whole_unit">{t('properties.rentalWholeUnit')}</option>
           </Select>
-          <Input
-            type="number"
-            placeholder={t('properties.minPrice')}
-            value={minPrice}
-            onChange={(e) => { setMinPrice(e.target.value); setPage(1); }}
-            min={0}
-          />
-          <Input
-            type="number"
-            placeholder={t('properties.maxPrice')}
-            value={maxPrice}
-            onChange={(e) => { setMaxPrice(e.target.value); setPage(1); }}
-            min={0}
-          />
+          <Select
+            value={sort}
+            onChange={(e) => { setSort(e.target.value); setPage(1); }}
+          >
+            <option value="">{t('sort.default')}</option>
+            <option value="price_asc">{t('sort.priceAsc')}</option>
+            <option value="price_desc">{t('sort.priceDesc')}</option>
+            <option value="name_asc">{t('sort.nameAsc')}</option>
+            <option value="name_desc">{t('sort.nameDesc')}</option>
+            <option value="capacity_asc">{t('sort.capacityAsc')}</option>
+            <option value="capacity_desc">{t('sort.capacityDesc')}</option>
+          </Select>
         </div>
         {hasFilters && (
           <div className="mt-3 flex justify-end">

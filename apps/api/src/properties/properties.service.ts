@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   ForbiddenException,
   Injectable,
   NotFoundException,
@@ -24,11 +25,6 @@ export class PropertiesService {
     }
     if (where.status === 'APPROVED') {
       where.isActive = true;
-    }
-    if (filter.minPrice !== undefined || filter.maxPrice !== undefined) {
-      where.pricePerNight = {};
-      if (filter.minPrice !== undefined) where.pricePerNight.gte = filter.minPrice;
-      if (filter.maxPrice !== undefined) where.pricePerNight.lte = filter.maxPrice;
     }
     if (filter.rentalType === 'whole_unit') {
       where.priceWholeUnit = { not: null };
@@ -56,7 +52,23 @@ export class PropertiesService {
         },
         skip,
         take: limit,
-        orderBy: { createdAt: 'desc' },
+        orderBy: (() => {
+          const orderBy: any[] = [
+            { promotionOrder: { sort: 'asc', nulls: 'last' } },
+          ];
+          const sortOrder = filter.sortOrder === 'asc' ? 'asc' : 'desc';
+          if (filter.sortBy === 'price') {
+            const priceField = filter.rentalType === 'whole_unit' ? 'priceWholeUnit' : 'pricePerNight';
+            orderBy.push({ [priceField]: sortOrder });
+          } else if (filter.sortBy === 'name') {
+            orderBy.push({ titleRo: sortOrder });
+          } else if (filter.sortBy === 'capacity') {
+            orderBy.push({ maxGuests: sortOrder });
+          } else {
+            orderBy.push({ createdAt: 'desc' });
+          }
+          return orderBy;
+        })(),
       }),
       this.prisma.property.count({ where }),
     ]);
@@ -134,6 +146,9 @@ export class PropertiesService {
     }
     if (property.ownerId !== ownerId) {
       throw new ForbiddenException('You can only edit your own properties');
+    }
+    if (dto.images !== undefined && dto.images.length === 0) {
+      throw new BadRequestException('At least one image is required');
     }
 
     return this.prisma.property.update({

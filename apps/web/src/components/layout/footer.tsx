@@ -26,9 +26,9 @@ export function Footer() {
                 <MapPin className="h-4 w-4 shrink-0" />
                 <span>Borșa, Maramureș, Romania</span>
               </div>
-<div className="flex items-center gap-2 text-sm text-white/60">
+              <div className="flex items-center gap-2 text-sm text-white/60">
                 <Mail className="h-4 w-4 shrink-0" />
-                <span>info@visitborsa.ro</span>
+                <span>thenestvila@gmail.com</span>
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@ export function Footer() {
           <div className="flex items-center gap-1.5">
             <Mail className="h-3.5 w-3.5" />
             <a href="mailto:stetco.catalin7@gmail.com" className="hover:text-white transition-colors">
-              stetco.catalin7@gmail.com
+              stetco.catalin7@gmail.com / thenestvila@gmail.com
             </a>
           </div>
           <span>Made with &hearts; by CTX</span>

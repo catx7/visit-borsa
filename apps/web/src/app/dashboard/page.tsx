@@ -12,6 +12,7 @@ import {
   Plus,
   ArrowRight,
   FileEdit,
+  Eye,
 } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
 import * as api from '@/lib/api';
@@ -94,6 +95,7 @@ export default function DashboardPage() {
     createdAt: string;
     extra: string;
     editUrl: string;
+    viewUrl: string;
   };
 
   const recentItems: RecentItem[] = [
@@ -106,6 +108,7 @@ export default function DashboardPage() {
       createdAt: p.createdAt,
       extra: formatPrice(p.pricePerNight) + ' ' + t('properties.perNight'),
       editUrl: `/dashboard/cazari/${p.id}/edit`,
+      viewUrl: `/cazari/${p.id}`,
     })),
     ...allServices.map((s) => ({
       id: s.id,
@@ -116,6 +119,7 @@ export default function DashboardPage() {
       createdAt: s.createdAt,
       extra: t(`serviceCategories.${s.category}`),
       editUrl: `/dashboard/servicii/${s.id}/edit`,
+      viewUrl: `/servicii/${s.id}`,
     })),
     ...allRestaurants.map((r) => ({
       id: r.id,
@@ -126,6 +130,7 @@ export default function DashboardPage() {
       createdAt: r.createdAt,
       extra: t(`priceRanges.${r.priceRange}`),
       editUrl: `/dashboard/restaurante/${r.id}/edit`,
+      viewUrl: `/restaurante/${r.id}`,
     })),
   ]
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
@@ -272,6 +277,11 @@ export default function DashboardPage() {
                     <Badge variant={statusBadgeVariant(item.status)}>
                       {t(`propertyStatus.${item.status}`)}
                     </Badge>
+                    <Link href={item.viewUrl}>
+                      <Button variant="ghost" size="sm" title={t('ownerPreview.previewLink')}>
+                        <Eye className="h-4 w-4" />
+                      </Button>
+                    </Link>
                     <Link href={item.editUrl}>
                       <Button variant="ghost" size="sm">
                         <FileEdit className="h-4 w-4" />

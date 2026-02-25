@@ -28,11 +28,16 @@ export default function ServiciiPage() {
 
   const [search, setSearch] = useState(searchParams.get('search') ?? '');
   const [category, setCategory] = useState(searchParams.get('category') ?? '');
+  const [sort, setSort] = useState(searchParams.get('sort') ?? '');
   const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
+
+  const [sortBy, sortOrder] = sort ? sort.split('_') : [undefined, undefined];
 
   const filter: api.ServiceFilter = {
     search: search || undefined,
     category: category || undefined,
+    sortBy,
+    sortOrder,
     status: 'APPROVED',
     page,
     limit: 12,
@@ -47,17 +52,19 @@ export default function ServiciiPage() {
     const params = new URLSearchParams();
     if (search) params.set('search', search);
     if (category) params.set('category', category);
+    if (sort) params.set('sort', sort);
     if (page > 1) params.set('page', String(page));
     router.replace(`/servicii?${params.toString()}`, { scroll: false });
-  }, [search, category, page, router]);
+  }, [search, category, sort, page, router]);
 
   const handleReset = () => {
     setSearch('');
     setCategory('');
+    setSort('');
     setPage(1);
   };
 
-  const hasFilters = search || category;
+  const hasFilters = search || category || sort;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -69,7 +76,7 @@ export default function ServiciiPage() {
           <SlidersHorizontal className="h-4 w-4 text-muted-foreground" />
           <span className="font-medium text-sm">{t('properties.filters')}</span>
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
@@ -88,6 +95,14 @@ export default function ServiciiPage() {
             {SERVICE_CATEGORIES.map((cat) => (
               <option key={cat} value={cat}>{t(`serviceCategories.${cat}`)}</option>
             ))}
+          </Select>
+          <Select
+            value={sort}
+            onChange={(e) => { setSort(e.target.value); setPage(1); }}
+          >
+            <option value="">{t('sort.default')}</option>
+            <option value="name_asc">{t('sort.nameAsc')}</option>
+            <option value="name_desc">{t('sort.nameDesc')}</option>
           </Select>
         </div>
         {hasFilters && (

@@ -25,12 +25,14 @@ import { AttractionCard } from '@/components/attraction/attraction-card';
 import { MapDisplayDynamic } from '@/components/map/map-display-dynamic';
 import { JsonLd } from '@/components/seo/json-ld';
 import { formatPrice, getLocalizedField } from '@/lib/utils';
+import { useAuth } from '@/lib/auth-context';
 import * as api from '@/lib/api';
 
 export default function CazareDetailPage() {
   const { t, i18n } = useTranslation();
   const params = useParams();
   const id = params.id as string;
+  const { user } = useAuth();
 
   const { data: property, isLoading, isError } = useQuery({
     queryKey: ['property', id],
@@ -63,7 +65,10 @@ export default function CazareDetailPage() {
     );
   }
 
-  if (isError || !property || property.status !== 'APPROVED' || !property.isActive) {
+  const isOwner = user && property && user.id === property.ownerId;
+  const isApproved = property?.status === 'APPROVED' && property?.isActive;
+
+  if (isError || !property || (!isApproved && !isOwner)) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
         <p className="text-muted-foreground">{t('common.error')}</p>
@@ -95,6 +100,14 @@ export default function CazareDetailPage() {
         priceRange: `${property.pricePerNight} RON`,
         url: `https://visitborsa.ro/cazari/${property.id}`,
       }} />
+
+      {/* Owner preview banner */}
+      {isOwner && !isApproved && (
+        <div className="mb-6 rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm text-amber-800">
+          <p className="font-semibold">{t('ownerPreview.pendingTitle')}</p>
+          <p className="mt-1">{t('ownerPreview.pendingDescription')}</p>
+        </div>
+      )}
 
       {/* Back link */}
       <Link href="/cazari" className="mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">

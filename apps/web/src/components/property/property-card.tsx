@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import { MapPin, Users, DoorOpen } from 'lucide-react';
+import { MapPin, Users, DoorOpen, Crown } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { formatPrice, getLocalizedField } from '@/lib/utils';
 import type { PropertyDto } from '@/lib/api';
@@ -45,6 +45,12 @@ export function PropertyCard({ property }: { property: PropertyDto }) {
           <span className={`absolute left-3 top-3 rounded-full backdrop-blur-sm px-3 py-1 text-xs font-semibold shadow-sm ${badgeColor}`}>
             {typeLabel}
           </span>
+          {property.promotionOrder != null && (
+            <span className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-amber-400/95 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-amber-950 shadow-sm">
+              <Crown className="h-3 w-3" />
+              {t('properties.premium')}
+            </span>
+          )}
           <div className="absolute bottom-3 right-3 rounded-lg bg-white/95 backdrop-blur-sm px-3 py-1.5 shadow-sm">
             <span className="font-bold text-primary text-lg tracking-tight">
               {formatPrice(property.pricePerNight)}

@@ -3,6 +3,7 @@ import type { MealPolicy } from '@prisma/client';
 import { PropertyType } from '@prisma/client';
 import {
   ArrayMaxSize,
+  ArrayMinSize,
   IsArray,
   IsBoolean,
   IsEnum,
@@ -57,12 +58,12 @@ export class CreatePropertyDto {
   @Min(0)
   pricePerNight: number;
 
-  @ApiPropertyOptional({ type: [String] })
-  @IsOptional()
+  @ApiProperty({ type: [String] })
   @IsArray()
+  @ArrayMinSize(1)
   @ArrayMaxSize(8)
   @IsString({ each: true })
-  images: string[] = [];
+  images: string[];
 
   @ApiPropertyOptional({ type: [String] })
   @IsOptional()

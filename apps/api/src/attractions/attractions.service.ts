@@ -61,9 +61,9 @@ export class AttractionsService {
 
   async getLocationOfMonth(): Promise<{ type: string; entity: any } | null> {
     const [property, service, restaurant, attraction] = await Promise.all([
-      this.prisma.property.findFirst({ where: { isLocationOfMonth: true } }),
-      this.prisma.service.findFirst({ where: { isLocationOfMonth: true } }),
-      this.prisma.restaurant.findFirst({ where: { isLocationOfMonth: true } }),
+      this.prisma.property.findFirst({ where: { isLocationOfMonth: true, status: 'APPROVED', isActive: true } }),
+      this.prisma.service.findFirst({ where: { isLocationOfMonth: true, status: 'APPROVED', isActive: true } }),
+      this.prisma.restaurant.findFirst({ where: { isLocationOfMonth: true, status: 'APPROVED', isActive: true } }),
       this.prisma.touristAttraction.findFirst({ where: { isLocationOfMonth: true } }),
     ]);
 
