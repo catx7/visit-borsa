@@ -13,3 +13,7 @@ coverage/
 apps/api/uploads/*
 !apps/api/uploads/.gitkeep
 .vercel
+
+# Serwist generated service worker
+apps/web/public/sw*
+apps/web/public/swe-worker*
