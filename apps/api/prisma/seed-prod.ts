@@ -35,6 +35,7 @@ async function main() {
           'Horses Waterfall is the tallest waterfall in Romania, with a 95-meter drop located at 1,300 m altitude in the Rodna Mountains. Accessible via a spectacular mountain trail from the Borsa resort, the waterfall impresses with its powerful flow and the surrounding wild landscape.',
         latitude: 47.6019,
         longitude: 24.8022,
+        displayOrder: 1,
         images: [
           'https://images.unsplash.com/photo-1432405972618-c6b0cfba8b63?w=800&h=600&fit=crop',
           'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=800&h=600&fit=crop',
@@ -50,6 +51,7 @@ async function main() {
           'Rodna Mountains National Park is an internationally important protected area, designated a UNESCO Biosphere Reserve. Spanning over 46,000 hectares, the park harbors remarkable biodiversity.',
         latitude: 47.5833,
         longitude: 24.8167,
+        displayOrder: 2,
         images: [
           'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=600&fit=crop',
           'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop',
@@ -64,6 +66,7 @@ async function main() {
           'Pietrosul Rodnei Peak, at 2,303 m altitude, is the highest point in the Eastern Carpathians and the culminating summit of the Rodna Mountains.',
         latitude: 47.593,
         longitude: 24.63,
+        displayOrder: 3,
         images: [
           'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=600&fit=crop',
           'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=800&h=600&fit=crop',
@@ -78,6 +81,7 @@ async function main() {
           'Iezer Glacial Lake is a glacial lake situated at 1,786 m altitude in the Rodna Mountains, renowned for its shape resembling the map of Romania.',
         latitude: 47.586,
         longitude: 24.62,
+        displayOrder: 4,
         images: [
           'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=800&h=600&fit=crop',
           'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&h=600&fit=crop',
@@ -92,8 +96,25 @@ async function main() {
           'Stiol Glacial Lake is a picturesque glacial lake located at the foothills of Gargalau Peak, considered the source of the Bistrita Aurii River.',
         latitude: 47.58,
         longitude: 24.64,
+        displayOrder: 5,
         images: [
           'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=800&h=600&fit=crop',
+        ],
+      },
+      {
+        titleRo: 'Complexul de Schi Borsa',
+        titleEn: 'Borsa Ski Complex',
+        descriptionRo:
+          'Complexul de Schi Borsa, cunoscut si ca Partia Olimpica, este cel mai mare domeniu schiabil din Maramures, cu o telecabina de 2.6 km.',
+        descriptionEn:
+          'The Borsa Ski Complex, also known as the Olympic Slope, is the largest ski area in Maramures, with a 2.6 km gondola.',
+        latitude: 47.651,
+        longitude: 24.672,
+        displayOrder: 6,
+        images: [
+          'https://images.unsplash.com/photo-1565992441121-4367c2967103?w=800&h=600&fit=crop',
+          'https://images.unsplash.com/photo-1551524559-8af4e6624178?w=800&h=600&fit=crop',
+          'https://images.unsplash.com/photo-1517483000871-1dbf64a6e1c6?w=800&h=600&fit=crop',
         ],
       },
       {
@@ -105,6 +126,7 @@ async function main() {
           'Buftiuc Outlaw Cave is a karst formation located near Horses Waterfall, shrouded in local legends about outlaws and hidden treasures.',
         latitude: 47.605,
         longitude: 24.795,
+        displayOrder: 7,
         images: [
           'https://images.unsplash.com/photo-1504699931874-e08a394733b1?w=800&h=600&fit=crop',
         ],
@@ -118,6 +140,7 @@ async function main() {
           'The Roots Museum is a unique museum in Romania, created by local artist Stefan Grec, who collected over 100 roots with unusual shapes.',
         latitude: 47.652,
         longitude: 24.664,
+        displayOrder: 8,
         images: [
           'https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=800&h=600&fit=crop',
         ],
@@ -131,6 +154,7 @@ async function main() {
           'The Wooden Church in Borsa, built around 1700, is a historical monument representative of traditional Maramures architecture.',
         latitude: 47.652,
         longitude: 24.6635,
+        displayOrder: 9,
         images: [
           'https://images.unsplash.com/photo-1555424681-b0ecf4fe11fa?w=800&h=600&fit=crop',
           'https://images.unsplash.com/photo-1548013146-72479768bada?w=800&h=600&fit=crop',
@@ -145,6 +169,7 @@ async function main() {
           'Moisei Monastery, established in 1599, is one of the oldest monastic settlements in Maramures.',
         latitude: 47.658,
         longitude: 24.538,
+        displayOrder: 10,
         images: [
           'https://images.unsplash.com/photo-1548013146-72479768bada?w=800&h=600&fit=crop',
           'https://images.unsplash.com/photo-1555424681-b0ecf4fe11fa?w=800&h=600&fit=crop',
@@ -159,6 +184,7 @@ async function main() {
           'The Moisei Heroes Monument is a memorial dedicated to the 29 victims of the October 1944 massacre.',
         latitude: 47.6565,
         longitude: 24.535,
+        displayOrder: 11,
         images: [
           'https://images.unsplash.com/photo-1564429238961-bf8b8d024ee8?w=800&h=600&fit=crop',
         ],
@@ -172,6 +198,7 @@ async function main() {
           'The mineral springs of Borsa have been documented since 1906 and are renowned for their therapeutic properties.',
         latitude: 47.6585,
         longitude: 24.6655,
+        displayOrder: 12,
         images: [
           'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&h=600&fit=crop',
           'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop',
@@ -186,23 +213,9 @@ async function main() {
           'Prislop Pass, at 1,416 m altitude, is one of the most spectacular mountain passes in Romania.',
         latitude: 47.5847,
         longitude: 24.8125,
+        displayOrder: 13,
         images: [
           'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
-        ],
-      },
-      {
-        titleRo: 'Complexul de Schi Borsa',
-        titleEn: 'Borsa Ski Complex',
-        descriptionRo:
-          'Complexul de Schi Borsa, cunoscut si ca Partia Olimpica, este cel mai mare domeniu schiabil din Maramures, cu o telecabina de 2.6 km.',
-        descriptionEn:
-          'The Borsa Ski Complex, also known as the Olympic Slope, is the largest ski area in Maramures, with a 2.6 km gondola.',
-        latitude: 47.651,
-        longitude: 24.672,
-        images: [
-          'https://images.unsplash.com/photo-1565992441121-4367c2967103?w=800&h=600&fit=crop',
-          'https://images.unsplash.com/photo-1551524559-8af4e6624178?w=800&h=600&fit=crop',
-          'https://images.unsplash.com/photo-1517483000871-1dbf64a6e1c6?w=800&h=600&fit=crop',
         ],
       },
       {
@@ -214,40 +227,42 @@ async function main() {
           'Pietroasa Hermitage is an isolated place of worship, set at approximately 1,000 m altitude in a naturally beautiful setting.',
         latitude: 47.62,
         longitude: 24.75,
+        displayOrder: 14,
         images: [
           'https://images.unsplash.com/photo-1548013146-72479768bada?w=800&h=600&fit=crop',
         ],
       },
     ],
   });
+  console.log('Created 14 tourist attractions');
 
-  // --- Test Client User ---
-  const clientPassword = await hash('TestClient2025!', 12);
-  const testClient = await prisma.user.upsert({
-    where: { email: 'test@visitborsa.ro' },
+  // --- Demo Client User ---
+  const clientPassword = await hash('DemoClient2025!', 12);
+  const demoClient = await prisma.user.upsert({
+    where: { email: 'demo@visitborsa.ro' },
     update: {},
     create: {
-      email: 'test@visitborsa.ro',
+      email: 'demo@visitborsa.ro',
       passwordHash: clientPassword,
       role: 'CLIENT',
       emailConfirmed: true,
-      firstName: 'Test',
-      lastName: 'Client',
-      phone: '+40 700 000 000',
+      firstName: 'Maria',
+      lastName: 'Popescu',
+      phone: '+40 745 123 456',
     },
   });
-  console.log('Test client upserted: test@visitborsa.ro');
+  console.log('Demo client upserted: demo@visitborsa.ro');
 
-  // --- 5 Test Properties (APPROVED) ---
+  // --- 10 Demo Properties (APPROVED) ---
   const properties = [
     {
       type: 'PENSIUNE' as const,
-      titleRo: 'TEST Pensiunea Rodnei',
-      titleEn: 'TEST Rodnei Guesthouse',
+      titleRo: 'Pensiunea Rodnei',
+      titleEn: 'Rodnei Guesthouse',
       descriptionRo:
-        'Pensiune tradițională în inima Borșei, cu vedere la munți și acces ușor la pârtiile de schi. Camere confortabile, mic dejun inclus.',
+        'Pensiune tradițională în inima Borșei, cu vedere la munți și acces ușor la pârtiile de schi. Camere confortabile, mic dejun inclus și parcare gratuită.',
       descriptionEn:
-        'Traditional guesthouse in the heart of Borsa, with mountain views and easy access to ski slopes. Comfortable rooms, breakfast included.',
+        'Traditional guesthouse in the heart of Borsa, with mountain views and easy access to ski slopes. Comfortable rooms, breakfast included and free parking.',
       address: 'Str. Principală nr. 10, Borșa',
       latitude: 47.652,
       longitude: 24.664,
@@ -269,8 +284,8 @@ async function main() {
     },
     {
       type: 'CABANA' as const,
-      titleRo: 'TEST Cabana Prislop',
-      titleEn: 'TEST Prislop Cabin',
+      titleRo: 'Cabana Prislop',
+      titleEn: 'Prislop Cabin',
       descriptionRo:
         'Cabană rustică la poalele Munților Rodnei, ideală pentru drumeții și relaxare în natură. Șemineu funcțional și grătar în curte.',
       descriptionEn:
@@ -298,8 +313,8 @@ async function main() {
     },
     {
       type: 'HOTEL' as const,
-      titleRo: 'TEST Hotel Borșa Resort',
-      titleEn: 'TEST Borsa Resort Hotel',
+      titleRo: 'Hotel Borșa Resort',
+      titleEn: 'Borsa Resort Hotel',
       descriptionRo:
         'Hotel modern cu spa și piscină, situat lângă telecabina Borșa. Camere spațioase cu balcon și toate facilitățile necesare.',
       descriptionEn:
@@ -329,8 +344,8 @@ async function main() {
     },
     {
       type: 'VILA' as const,
-      titleRo: 'TEST Vila Cascada',
-      titleEn: 'TEST Waterfall Villa',
+      titleRo: 'Vila Cascada',
+      titleEn: 'Waterfall Villa',
       descriptionRo:
         'Vilă elegantă pe drumul spre Cascada Cailor. Ideală pentru familii sau grupuri, cu grădină mare și loc de joacă pentru copii.',
       descriptionEn:
@@ -361,8 +376,8 @@ async function main() {
     },
     {
       type: 'APARTAMENT' as const,
-      titleRo: 'TEST Apartament Central',
-      titleEn: 'TEST Central Apartment',
+      titleRo: 'Apartament Central',
+      titleEn: 'Central Apartment',
       descriptionRo:
         'Apartament modern în centrul Borșei, complet mobilat și utilat. Aproape de magazine, restaurante și transport public.',
       descriptionEn:
@@ -380,25 +395,154 @@ async function main() {
         'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop',
       ],
     },
+    {
+      type: 'PENSIUNE' as const,
+      titleRo: 'Pensiunea Floare de Colț',
+      titleEn: 'Edelweiss Guesthouse',
+      descriptionRo:
+        'Pensiune cochetă cu specific tradițional maramureșean, situată într-o zonă liniștită. Bucătărie cu produse locale și grădină cu flori.',
+      descriptionEn:
+        'Charming guesthouse with traditional Maramures style, located in a quiet area. Kitchen with local products and flower garden.',
+      address: 'Str. Florilor nr. 3, Borșa',
+      latitude: 47.6545,
+      longitude: 24.6625,
+      pricePerNight: 220,
+      rooms: 6,
+      maxGuests: 12,
+      amenities: [
+        'wifi',
+        'parking',
+        'breakfast',
+        'garden',
+        'traditional-style',
+        'mountain-view',
+      ],
+      mealPolicy: 'INCLUDED' as const,
+      paymentMethods: ['CASH', 'BANK_TRANSFER'],
+      images: [
+        'https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=800&h=600&fit=crop',
+      ],
+    },
+    {
+      type: 'CABANA' as const,
+      titleRo: 'Cabana Ursului',
+      titleEn: 'Bear Cabin',
+      descriptionRo:
+        'Cabană izolată în pădure, perfectă pentru escapade romantice sau retrageri în natură. Cadă cu hidromasaj pe terasă, șemineu și liniște totală.',
+      descriptionEn:
+        'Secluded cabin in the forest, perfect for romantic getaways or nature retreats. Hot tub on the terrace, fireplace and complete tranquility.',
+      address: 'Zona Pădure, Borșa',
+      latitude: 47.645,
+      longitude: 24.685,
+      pricePerNight: 400,
+      priceWholeUnit: 400,
+      rooms: 2,
+      maxGuests: 4,
+      amenities: ['wifi', 'parking', 'fireplace', 'terrace', 'mountain-view'],
+      mealPolicy: 'NONE' as const,
+      paymentMethods: ['CASH', 'CARD', 'ONLINE'],
+      paidExtras: ['hot_tub', 'sauna'],
+      images: [
+        'https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=800&h=600&fit=crop',
+      ],
+    },
+    {
+      type: 'CASA_VACANTA' as const,
+      titleRo: 'Casa de Vacanță Munții Rodnei',
+      titleEn: 'Rodna Mountains Holiday House',
+      descriptionRo:
+        'Casă de vacanță spațioasă, cu grădină mare, ideală pentru familii sau grupuri mari. Complet echipată, cu loc de joacă și zonă de grătar.',
+      descriptionEn:
+        'Spacious holiday house with large garden, ideal for families or large groups. Fully equipped, with playground and barbecue area.',
+      address: 'Str. Munților nr. 45, Borșa',
+      latitude: 47.648,
+      longitude: 24.668,
+      pricePerNight: 500,
+      priceWholeUnit: 500,
+      rooms: 5,
+      maxGuests: 12,
+      amenities: [
+        'wifi',
+        'parking',
+        'garden',
+        'bbq',
+        'terrace',
+        'mountain-view',
+      ],
+      mealPolicy: 'NONE' as const,
+      paymentMethods: ['CASH', 'BANK_TRANSFER', 'CARD'],
+      images: [
+        'https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&h=600&fit=crop',
+      ],
+    },
+    {
+      type: 'CAMERA' as const,
+      titleRo: 'Cameră la Familia Ionescu',
+      titleEn: 'Room at Ionescu Family',
+      descriptionRo:
+        'Cameră curată și confortabilă în casa unei familii locale. Acces la bucătărie și grădină. Experiență autentică de cazare la localnici.',
+      descriptionEn:
+        'Clean and comfortable room in a local family house. Access to kitchen and garden. Authentic local accommodation experience.',
+      address: 'Str. Livezilor nr. 8, Borșa',
+      latitude: 47.6555,
+      longitude: 24.663,
+      pricePerNight: 120,
+      rooms: 1,
+      maxGuests: 2,
+      amenities: ['wifi', 'parking', 'garden'],
+      mealPolicy: 'EXTRA_COST' as const,
+      paymentMethods: ['CASH'],
+      images: [
+        'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&h=600&fit=crop',
+      ],
+    },
+    {
+      type: 'HOTEL' as const,
+      titleRo: 'Hotel Maramureș',
+      titleEn: 'Maramures Hotel',
+      descriptionRo:
+        'Hotel cu tradiție în Borșa, renovat recent. Restaurant cu bucătărie locală și internațională, sală de conferințe și parcare subterană.',
+      descriptionEn:
+        'Established hotel in Borsa, recently renovated. Restaurant with local and international cuisine, conference room and underground parking.',
+      address: 'Bd. Republicii nr. 12, Borșa',
+      latitude: 47.6515,
+      longitude: 24.666,
+      pricePerNight: 380,
+      rooms: 20,
+      maxGuests: 40,
+      amenities: [
+        'wifi',
+        'parking',
+        'restaurant',
+        'bar',
+        'air-conditioning',
+        'room-service',
+      ],
+      mealPolicy: 'INCLUDED' as const,
+      paymentMethods: ['CASH', 'CARD', 'BANK_TRANSFER', 'ONLINE'],
+      images: [
+        'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800&h=600&fit=crop',
+      ],
+    },
   ];
 
   for (const prop of properties) {
     await prisma.property.create({
       data: {
         ...prop,
-        ownerId: testClient.id,
+        ownerId: demoClient.id,
         status: 'APPROVED',
       },
     });
   }
-  console.log('Created 5 test properties (APPROVED)');
+  console.log('Created 10 demo properties (APPROVED)');
 
-  // --- 5 Test Services (APPROVED) ---
+  // --- 10 Demo Services (APPROVED) ---
   const services = [
     {
       category: 'ATV' as const,
-      titleRo: 'TEST Ture ATV Borșa',
-      titleEn: 'TEST Borsa ATV Tours',
+      titleRo: 'Ture ATV Borșa',
+      titleEn: 'Borsa ATV Tours',
       descriptionRo:
         'Explorează munții din Borșa cu ATV-ul! Ture ghidate pe trasee montane spectaculoase, pentru începători și avansați.',
       descriptionEn:
@@ -414,14 +558,14 @@ async function main() {
     },
     {
       category: 'HIKING' as const,
-      titleRo: 'TEST Ghid Montan Borșa',
-      titleEn: 'TEST Borsa Mountain Guide',
+      titleRo: 'Ghid Montan Rodnei',
+      titleEn: 'Rodnei Mountain Guide',
       descriptionRo:
         'Ghid montan autorizat pentru trasee în Munții Rodnei. Trasee către Cascada Cailor, Lacul Iezer, Vf. Pietrosul.',
       descriptionEn:
         'Authorized mountain guide for trails in the Rodna Mountains. Routes to Horses Waterfall, Iezer Lake, Pietrosul Peak.',
       phone: '+40 740 222 222',
-      email: 'ghid@test.ro',
+      email: 'ghid@visitborsa.ro',
       priceInfo: 'De la 200 RON / zi',
       latitude: 47.652,
       longitude: 24.664,
@@ -431,8 +575,8 @@ async function main() {
     },
     {
       category: 'SKIING' as const,
-      titleRo: 'TEST Instructor Schi Borșa',
-      titleEn: 'TEST Borsa Ski Instructor',
+      titleRo: 'Instructor Schi Pârtia Olimpică',
+      titleEn: 'Olympic Slope Ski Instructor',
       descriptionRo:
         'Lecții de schi pentru toate nivelurile pe Pârtia Olimpică din Borșa. Echipament inclus la cerere.',
       descriptionEn:
@@ -448,8 +592,8 @@ async function main() {
     },
     {
       category: 'TAXI_LOCAL' as const,
-      titleRo: 'TEST Taxi Borșa',
-      titleEn: 'TEST Borsa Taxi',
+      titleRo: 'Taxi Rapid Borșa',
+      titleEn: 'Borsa Quick Taxi',
       descriptionRo:
         'Serviciu de taxi local în Borșa și împrejurimi. Transport la aeroport, gară și obiective turistice.',
       descriptionEn:
@@ -464,8 +608,8 @@ async function main() {
     },
     {
       category: 'SNOWMOBILE' as const,
-      titleRo: 'TEST Snowmobile Borșa',
-      titleEn: 'TEST Borsa Snowmobile',
+      titleRo: 'Aventuri pe Zăpadă',
+      titleEn: 'Snow Adventures',
       descriptionRo:
         'Aventură pe zăpadă cu snowmobilul! Ture ghidate prin păduri și pe creste montane, iarna perfectă în Borșa.',
       descriptionEn:
@@ -479,24 +623,108 @@ async function main() {
         'https://images.unsplash.com/photo-1517483000871-1dbf64a6e1c6?w=800&h=600&fit=crop',
       ],
     },
+    {
+      category: 'HORSEBACK_RIDING' as const,
+      titleRo: 'Plimbări Călare pe Munte',
+      titleEn: 'Mountain Horseback Riding',
+      descriptionRo:
+        'Plimbări călare pe trasee montane din jurul Borșei. Cai blânzi, potriviți și pentru începători. Experiență unică în natură.',
+      descriptionEn:
+        'Horseback riding on mountain trails around Borsa. Gentle horses suitable for beginners. Unique nature experience.',
+      phone: '+40 741 111 111',
+      address: 'Zona Prislop, Borșa',
+      priceInfo: 'De la 100 RON / oră',
+      latitude: 47.588,
+      longitude: 24.808,
+      images: [
+        'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&h=600&fit=crop',
+      ],
+    },
+    {
+      category: 'ATV' as const,
+      titleRo: 'Off-Road Extreme Borșa',
+      titleEn: 'Borsa Off-Road Extreme',
+      descriptionRo:
+        'Ture ATV extreme pe trasee off-road dificile pentru cei cu experiență. Echipament de protecție inclus.',
+      descriptionEn:
+        'Extreme ATV tours on difficult off-road trails for experienced riders. Protective equipment included.',
+      phone: '+40 741 222 222',
+      address: 'Zona Cascada Cailor, Borșa',
+      priceInfo: 'De la 250 RON / 2 ore',
+      latitude: 47.608,
+      longitude: 24.795,
+      images: [
+        'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=600&fit=crop',
+      ],
+    },
+    {
+      category: 'HIKING' as const,
+      titleRo: 'Trasee Nordic Walking',
+      titleEn: 'Nordic Walking Trails',
+      descriptionRo:
+        'Sesiuni ghidate de nordic walking pe trasee ușoare din zona Borșei. Ideal pentru seniori și familii. Bețe furnizate.',
+      descriptionEn:
+        'Guided nordic walking sessions on easy trails around Borsa. Ideal for seniors and families. Poles provided.',
+      phone: '+40 741 333 333',
+      priceInfo: 'De la 80 RON / persoană',
+      latitude: 47.654,
+      longitude: 24.663,
+      images: [
+        'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&h=600&fit=crop',
+      ],
+    },
+    {
+      category: 'SKIING' as const,
+      titleRo: 'Închirieri Echipament Schi',
+      titleEn: 'Ski Equipment Rental',
+      descriptionRo:
+        'Închiriere echipament de schi complet — skiuri, clăpari, bețe, cască. Echipament pentru adulți și copii.',
+      descriptionEn:
+        'Full ski equipment rental — skis, boots, poles, helmet. Equipment for adults and children.',
+      phone: '+40 741 444 444',
+      address: 'Baza Pârtiei Olimpice, Borșa',
+      priceInfo: 'De la 60 RON / zi',
+      latitude: 47.6505,
+      longitude: 24.673,
+      images: [
+        'https://images.unsplash.com/photo-1565992441121-4367c2967103?w=800&h=600&fit=crop',
+      ],
+    },
+    {
+      category: 'SNOWMOBILE' as const,
+      titleRo: 'Snowmobile Night Ride',
+      titleEn: 'Snowmobile Night Ride',
+      descriptionRo:
+        'Experiență unică de snowmobile pe timp de noapte! Ture ghidate cu iluminare LED, ceai cald la sosire.',
+      descriptionEn:
+        'Unique nighttime snowmobile experience! Guided tours with LED lighting, hot tea on arrival.',
+      phone: '+40 741 555 555',
+      address: 'Zona Telecabina, Borșa',
+      priceInfo: 'De la 300 RON / persoană',
+      latitude: 47.651,
+      longitude: 24.6715,
+      images: [
+        'https://images.unsplash.com/photo-1517483000871-1dbf64a6e1c6?w=800&h=600&fit=crop',
+      ],
+    },
   ];
 
   for (const svc of services) {
     await prisma.service.create({
       data: {
         ...svc,
-        ownerId: testClient.id,
+        ownerId: demoClient.id,
         status: 'APPROVED',
       },
     });
   }
-  console.log('Created 5 test services (APPROVED)');
+  console.log('Created 10 demo services (APPROVED)');
 
-  // --- 5 Test Restaurants (APPROVED) ---
+  // --- 10 Demo Restaurants (APPROVED) ---
   const restaurants = [
     {
-      titleRo: 'TEST Restaurant La Conac',
-      titleEn: 'TEST The Manor Restaurant',
+      titleRo: 'Restaurant La Conac',
+      titleEn: 'The Manor Restaurant',
       descriptionRo:
         'Restaurant tradițional cu specific maramureșean. Preparate din ingrediente locale, atmosferă autentică cu muzică live în weekend.',
       descriptionEn:
@@ -513,8 +741,8 @@ async function main() {
       ],
     },
     {
-      titleRo: 'TEST Pizzeria Bella Vista',
-      titleEn: 'TEST Bella Vista Pizzeria',
+      titleRo: 'Pizzeria Bella Vista',
+      titleEn: 'Bella Vista Pizzeria',
       descriptionRo:
         'Pizza artizanală coaptă în cuptor cu lemne, paste proaspete și salate. Vedere panoramică la munți de pe terasă.',
       descriptionEn:
@@ -531,8 +759,8 @@ async function main() {
       ],
     },
     {
-      titleRo: 'TEST Cabana Muntelui',
-      titleEn: 'TEST Mountain Cabin Restaurant',
+      titleRo: 'Cabana Muntelui',
+      titleEn: 'Mountain Cabin Restaurant',
       descriptionRo:
         'Restaurant de munte cu preparate la grătar și specialități locale. Terasă cu vedere la pârtia de schi.',
       descriptionEn:
@@ -549,8 +777,8 @@ async function main() {
       ],
     },
     {
-      titleRo: 'TEST Bistro Central',
-      titleEn: 'TEST Central Bistro',
+      titleRo: 'Bistro Central',
+      titleEn: 'Central Bistro',
       descriptionRo:
         'Bistro modern în centrul Borșei. Meniu diversificat cu opțiuni internaționale și locale, cafea de specialitate.',
       descriptionEn:
@@ -567,8 +795,8 @@ async function main() {
       ],
     },
     {
-      titleRo: 'TEST Terasa Cascadei',
-      titleEn: 'TEST Waterfall Terrace',
+      titleRo: 'Terasa Cascadei',
+      titleEn: 'Waterfall Terrace',
       descriptionRo:
         'Terasă în aer liber pe drumul spre Cascada Cailor. Mici, cârnați și ciorbă de burtă, într-un cadru natural superb.',
       descriptionEn:
@@ -584,22 +812,114 @@ async function main() {
         'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop',
       ],
     },
+    {
+      titleRo: 'Pensiunea-Restaurant Maramureșul',
+      titleEn: 'Maramuresul Inn-Restaurant',
+      descriptionRo:
+        'Restaurant cu specific maramureșean autentic, cu sarmale, bulz și balmoș preparat după rețete tradiționale din Borșa.',
+      descriptionEn:
+        'Restaurant with authentic Maramures specialties, with traditional cabbage rolls, polenta dishes prepared from Borsa recipes.',
+      cuisineRo: 'Maramureșeană autentică',
+      cuisineEn: 'Authentic Maramures',
+      phone: '+40 741 666 666',
+      address: 'Str. Tineretului nr. 7, Borșa',
+      openingHours: 'Luni-Duminică: 11:00 - 21:00',
+      latitude: 47.654,
+      longitude: 24.6635,
+      images: [
+        'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop',
+      ],
+    },
+    {
+      titleRo: 'Fast Food La Telegondolă',
+      titleEn: 'Gondola Fast Food',
+      descriptionRo:
+        'Fast food la baza telegondolei. Shaorma, burgeri, cartofi prăjiți și băuturi calde. Rapid și accesibil.',
+      descriptionEn:
+        'Fast food at the base of the gondola. Shawarma, burgers, fries and hot drinks. Quick and affordable.',
+      cuisineRo: 'Fast food',
+      cuisineEn: 'Fast food',
+      phone: '+40 741 777 777',
+      address: 'Baza Telecabinei, Borșa',
+      openingHours: 'Luni-Duminică: 09:00 - 20:00',
+      latitude: 47.6508,
+      longitude: 24.672,
+      images: [
+        'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800&h=600&fit=crop',
+      ],
+    },
+    {
+      titleRo: 'Cofetăria Dulce Borșa',
+      titleEn: 'Sweet Borsa Pastry Shop',
+      descriptionRo:
+        'Cofetărie artizanală cu prăjituri tradiționale și moderne. Tort la comandă, înghețată de casă și cafea de specialitate.',
+      descriptionEn:
+        'Artisan pastry shop with traditional and modern cakes. Custom cakes, homemade ice cream and specialty coffee.',
+      cuisineRo: 'Cofetărie și patiserie',
+      cuisineEn: 'Pastry and confectionery',
+      phone: '+40 741 888 888',
+      address: 'Str. Principală nr. 20, Borșa',
+      openingHours: 'Luni-Sâmbătă: 08:00 - 20:00',
+      latitude: 47.6528,
+      longitude: 24.665,
+      images: [
+        'https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&h=600&fit=crop',
+      ],
+    },
+    {
+      titleRo: 'Pub & Grill Mountain Spirit',
+      titleEn: 'Mountain Spirit Pub & Grill',
+      descriptionRo:
+        'Pub cu atmosferă relaxată, bere artizanală locală și grătar premium. Muzică live vineri și sâmbătă.',
+      descriptionEn:
+        'Pub with relaxed atmosphere, local craft beer and premium grill. Live music on Fridays and Saturdays.',
+      cuisineRo: 'Pub food & grill',
+      cuisineEn: 'Pub food & grill',
+      phone: '+40 741 999 999',
+      address: 'Str. Libertății nr. 10, Borșa',
+      openingHours: 'Luni-Duminică: 16:00 - 01:00',
+      latitude: 47.6532,
+      longitude: 24.6648,
+      images: [
+        'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop',
+      ],
+    },
+    {
+      titleRo: 'Sushi Bar Zen',
+      titleEn: 'Zen Sushi Bar',
+      descriptionRo:
+        'Primul sushi bar din Borșa! Sushi proaspăt preparat zilnic, ramen și specialități asiatice într-un ambient modern.',
+      descriptionEn:
+        'The first sushi bar in Borsa! Fresh sushi prepared daily, ramen and Asian specialties in a modern setting.',
+      cuisineRo: 'Japoneză și asiatică',
+      cuisineEn: 'Japanese and Asian',
+      phone: '+40 742 000 000',
+      address: 'Str. Telecabinei nr. 8, Borșa',
+      openingHours: 'Marți-Duminică: 12:00 - 22:00',
+      latitude: 47.6512,
+      longitude: 24.671,
+      images: [
+        'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop',
+      ],
+    },
   ];
 
   for (const rest of restaurants) {
     await prisma.restaurant.create({
       data: {
         ...rest,
-        ownerId: testClient.id,
+        ownerId: demoClient.id,
         status: 'APPROVED',
       },
     });
   }
-  console.log('Created 5 test restaurants (APPROVED)');
+  console.log('Created 10 demo restaurants (APPROVED)');
 
-  console.log('Production seed completed successfully!');
+  console.log('\n=== Production seed completed ===');
+  console.log('Admin: admin@visitborsa.ro / V1s1tB0rs@2025!');
+  console.log('Demo client: demo@visitborsa.ro / DemoClient2025!');
   console.log(
-    'Created: 1 admin user, 1 test client, 14 attractions, 5 properties, 5 services, 5 restaurants',
+    'Created: 14 attractions, 10 properties, 10 services, 10 restaurants',
   );
 }
 
