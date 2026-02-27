@@ -91,7 +91,7 @@ export default function HomePage() {
       <JsonLd data={{
         '@context': 'https://schema.org',
         '@type': 'WebSite',
-        name: 'VisitBorsa',
+        name: 'VisitBorșa',
         url: 'https://visitborsa.ro',
         description: 'Platformă turistică pentru Borșa, Maramureș — cazări, servicii turistice, restaurante și obiective turistice.',
         potentialAction: {
@@ -103,7 +103,7 @@ export default function HomePage() {
       <JsonLd data={{
         '@context': 'https://schema.org',
         '@type': 'Organization',
-        name: 'VisitBorsa',
+        name: 'VisitBorșa',
         url: 'https://visitborsa.ro',
         description: 'Platformă turistică pentru Borșa, Maramureș',
         areaServed: {

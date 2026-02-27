@@ -1,7 +1,7 @@
 {
   "id": "/",
-  "name": "VisitBorsa",
-  "short_name": "VisitBorsa",
+  "name": "VisitBorșa",
+  "short_name": "VisitBorșa",
   "description": "Platformă turistică pentru Borșa, Maramureș — cazări, servicii, restaurante și obiective turistice",
   "start_url": "/",
   "display": "standalone",

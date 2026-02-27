@@ -1,6 +1,6 @@
 {
   "site": {
-    "name": "VisitBorsa",
+    "name": "VisitBorșa",
     "description": "Platformă turistică pentru Borșa, Maramureș — cazări, servicii, restaurante și obiective turistice"
   },
   "nav": {
@@ -574,7 +574,7 @@
     "messageTemplate": "Bună ziua! Doresc o rezervare la {{propertyName}}.\n\nCheck-in: {{checkIn}}\nCheck-out: {{checkOut}}\nNumăr persoane: {{persons}}\n\nTrimis prin visitborsa.ro"
   },
   "pwa": {
-    "installTitle": "Instalează VisitBorsa",
+    "installTitle": "Instalează VisitBorșa",
     "installDescription": "acces rapid de pe ecranul telefonului",
     "install": "Instalează",
     "iosInstructions": "Apasă",

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Despre Borșa — Istorie, Natură, Tradiții | VisitBorsa',
+  title: 'Despre Borșa — Istorie, Natură, Tradiții | VisitBorșa',
   description:
     'Descoperă Borșa, Maramureș — istorie, geografie, natură, tradiții și cultură. Oraș la poalele Munților Rodnei, la ~700m altitudine.',
   keywords: ['despre borsa', 'borsa maramures', 'istorie borsa', 'traditii maramures', 'natura borsa', 'muntii rodnei'],

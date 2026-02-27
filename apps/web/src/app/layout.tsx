@@ -12,8 +12,8 @@ const dmSerif = DM_Serif_Display({ weight: '400', subsets: ['latin'], variable: 
 export const metadata: Metadata = {
   metadataBase: new URL('https://visitborsa.ro'),
   title: {
-    default: 'VisitBorsa — Cazare Borșa, Maramureș | Pensiuni, Hoteluri, Restaurante',
-    template: '%s | VisitBorsa',
+    default: 'VisitBorșa — Cazare Borșa, Maramureș | Pensiuni, Hoteluri, Restaurante',
+    template: '%s | VisitBorșa',
   },
   description:
     'Platformă turistică pentru Borșa, Maramureș — cazări, pensiuni, hoteluri, vile, servicii turistice, restaurante și obiective turistice în inima Munților Rodnei.',
@@ -26,13 +26,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ro_RO',
-    siteName: 'VisitBorsa',
-    title: 'VisitBorsa — Cazare Borșa, Maramureș',
+    siteName: 'VisitBorșa',
+    title: 'VisitBorșa — Cazare Borșa, Maramureș',
     description: 'Pensiuni, hoteluri, restaurante și servicii turistice în Borșa, inima Munților Rodnei.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'VisitBorsa — Cazare Borșa, Maramureș',
+    title: 'VisitBorșa — Cazare Borșa, Maramureș',
     description: 'Pensiuni, hoteluri, restaurante și servicii turistice în Borșa, inima Munților Rodnei.',
   },
   alternates: {

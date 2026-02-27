@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Offline | VisitBorsa',
+  title: 'Offline | VisitBorșa',
 };
 
 export default function OfflinePage() {

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Obiective Turistice Borșa — Ce Să Vizitezi | VisitBorsa',
+  title: 'Obiective Turistice Borșa — Ce Să Vizitezi | VisitBorșa',
   description:
     'Obiective turistice în Borșa, Maramureș — Cascada Cailor, Munții Rodnei, lacuri glaciare, trasee montane. Descoperă ce să vizitezi în Borșa.',
   keywords: ['obiective turistice borsa', 'ce sa vizitezi borsa', 'cascada cailor', 'muntii rodnei', 'trasee montane borsa', 'turism borsa'],
