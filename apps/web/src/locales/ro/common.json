@@ -576,6 +576,8 @@
   "pwa": {
     "installTitle": "Instalează VisitBorsa",
     "installDescription": "acces rapid de pe ecranul telefonului",
-    "install": "Instalează"
+    "install": "Instalează",
+    "iosInstructions": "Apasă",
+    "iosThen": "apoi «Adaugă pe ecranul principal»"
   }
 }

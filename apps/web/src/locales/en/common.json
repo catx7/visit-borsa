@@ -576,6 +576,8 @@
   "pwa": {
     "installTitle": "Install VisitBorsa",
     "installDescription": "quick access from your home screen",
-    "install": "Install"
+    "install": "Install",
+    "iosInstructions": "Tap",
+    "iosThen": "then «Add to Home Screen»"
   }
 }
