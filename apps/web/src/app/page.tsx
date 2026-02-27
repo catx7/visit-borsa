@@ -14,6 +14,7 @@ import { AttractionCard } from '@/components/attraction/attraction-card';
 import { ServiceCard } from '@/components/service/service-card';
 import { RestaurantCard } from '@/components/restaurant/restaurant-card';
 import { Skeleton } from '@/components/ui/skeleton';
+import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import { JsonLd } from '@/components/seo/json-ld';
 import { getLocalizedField } from '@/lib/utils';
 import * as api from '@/lib/api';
@@ -119,27 +120,33 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-linear-to-t from-primary/80 via-primary/30 to-primary/10" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="font-display text-4xl text-white sm:text-5xl lg:text-7xl drop-shadow-lg">
-              {t('home.hero.title')}
-            </h1>
-            <p className="mt-6 text-lg text-white sm:text-xl leading-relaxed drop-shadow-md">
-              {t('home.hero.subtitle')}
-            </p>
-            <form onSubmit={handleSearch} className="mt-10 flex gap-3 sm:mx-auto sm:max-w-lg">
-              <div className="relative flex-1">
-                <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <Input
-                  type="text"
-                  placeholder={t('home.hero.searchPlaceholder')}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="h-12 rounded-2xl pl-11 text-base bg-white/95 border-0 shadow-lg"
-                />
-              </div>
-              <Button type="submit" className="h-12 rounded-2xl px-6 bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg">
-                {t('properties.search')}
-              </Button>
-            </form>
+            <ScrollReveal animation="fade-up" immediate delay={100}>
+              <h1 className="font-display text-4xl text-white sm:text-5xl lg:text-7xl drop-shadow-lg">
+                {t('home.hero.title')}
+              </h1>
+            </ScrollReveal>
+            <ScrollReveal animation="fade-up" immediate delay={300}>
+              <p className="mt-6 text-lg text-white sm:text-xl leading-relaxed drop-shadow-md">
+                {t('home.hero.subtitle')}
+              </p>
+            </ScrollReveal>
+            <ScrollReveal animation="fade-up" immediate delay={500}>
+              <form onSubmit={handleSearch} className="mt-10 flex gap-3 sm:mx-auto sm:max-w-lg">
+                <div className="relative flex-1">
+                  <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                  <Input
+                    type="text"
+                    placeholder={t('home.hero.searchPlaceholder')}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="h-12 rounded-2xl pl-11 text-base bg-white/95 border-0 shadow-lg"
+                  />
+                </div>
+                <Button type="submit" className="h-12 rounded-2xl px-6 bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg">
+                  {t('properties.search')}
+                </Button>
+              </form>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -148,13 +155,15 @@ export default function HomePage() {
       {(loadingLocation || locationOfMonth) && (
         <section className="py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center gap-3 mb-10">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-100 text-amber-600">
-                <Star className="h-5 w-5 fill-current" />
+            <ScrollReveal animation="fade-up">
+              <div className="flex items-center gap-3 mb-10">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-100 text-amber-600">
+                  <Star className="h-5 w-5 fill-current" />
+                </div>
+                <h2 className="font-display text-2xl tracking-tight sm:text-3xl">{t('home.locationOfMonth')}</h2>
               </div>
-              <h2 className="font-display text-2xl tracking-tight sm:text-3xl">{t('home.locationOfMonth')}</h2>
-            </div>
-            <div>
+            </ScrollReveal>
+            <ScrollReveal animation="scale-in" delay={150}>
               {loadingLocation ? (
                 <Skeleton className="h-72 w-full rounded-2xl" />
               ) : locationOfMonth ? (() => {
@@ -203,7 +212,7 @@ export default function HomePage() {
                   </Link>
                 );
               })() : null}
-            </div>
+            </ScrollReveal>
           </div>
         </section>
       )}
@@ -211,19 +220,23 @@ export default function HomePage() {
       {/* Promoted Properties */}
       <section className="bg-secondary/50 py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            title={t('home.promotedProperties')}
-            href="/cazari"
-            viewAllLabel={t('home.viewAll')}
-            icon={Bed}
-          />
+          <ScrollReveal animation="fade-up">
+            <SectionHeader
+              title={t('home.promotedProperties')}
+              href="/cazari"
+              viewAllLabel={t('home.viewAll')}
+              icon={Bed}
+            />
+          </ScrollReveal>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {loadingPromoted
               ? Array.from({ length: 3 }).map((_, i) => (
                   <Skeleton key={i} className="aspect-4/3 rounded-2xl" />
                 ))
-              : promotedProperties?.slice(0, 3).map((property) => (
-                  <PropertyCard key={property.id} property={property} />
+              : promotedProperties?.slice(0, 3).map((property, i) => (
+                  <ScrollReveal key={property.id} animation="fade-up" delay={i * 120}>
+                    <PropertyCard property={property} />
+                  </ScrollReveal>
                 ))}
           </div>
         </div>
@@ -232,19 +245,23 @@ export default function HomePage() {
       {/* Promoted Services */}
       <section className="py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            title={t('home.promotedServices')}
-            href="/servicii"
-            viewAllLabel={t('home.viewAll')}
-            icon={Wrench}
-          />
+          <ScrollReveal animation="fade-up">
+            <SectionHeader
+              title={t('home.promotedServices')}
+              href="/servicii"
+              viewAllLabel={t('home.viewAll')}
+              icon={Wrench}
+            />
+          </ScrollReveal>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {loadingServices
               ? Array.from({ length: 3 }).map((_, i) => (
                   <Skeleton key={i} className="aspect-4/3 rounded-2xl" />
                 ))
-              : promotedServices?.slice(0, 3).map((service) => (
-                  <ServiceCard key={service.id} service={service} />
+              : promotedServices?.slice(0, 3).map((service, i) => (
+                  <ScrollReveal key={service.id} animation="fade-up" delay={i * 120}>
+                    <ServiceCard service={service} />
+                  </ScrollReveal>
                 ))}
           </div>
         </div>
@@ -253,19 +270,23 @@ export default function HomePage() {
       {/* Promoted Restaurants */}
       <section className="bg-secondary/50 py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            title={t('home.promotedRestaurants')}
-            href="/restaurante"
-            viewAllLabel={t('home.viewAll')}
-            icon={UtensilsCrossed}
-          />
+          <ScrollReveal animation="fade-up">
+            <SectionHeader
+              title={t('home.promotedRestaurants')}
+              href="/restaurante"
+              viewAllLabel={t('home.viewAll')}
+              icon={UtensilsCrossed}
+            />
+          </ScrollReveal>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {loadingRestaurants
               ? Array.from({ length: 3 }).map((_, i) => (
                   <Skeleton key={i} className="aspect-4/3 rounded-2xl" />
                 ))
-              : promotedRestaurants?.slice(0, 3).map((restaurant) => (
-                  <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+              : promotedRestaurants?.slice(0, 3).map((restaurant, i) => (
+                  <ScrollReveal key={restaurant.id} animation="fade-up" delay={i * 120}>
+                    <RestaurantCard restaurant={restaurant} />
+                  </ScrollReveal>
                 ))}
           </div>
         </div>
@@ -274,45 +295,51 @@ export default function HomePage() {
       {/* Featured Attractions */}
       <section className="py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            title={t('home.featuredAttractions')}
-            href="/de-vizitat"
-            viewAllLabel={t('home.viewAll')}
-            icon={Compass}
-          />
+          <ScrollReveal animation="fade-up">
+            <SectionHeader
+              title={t('home.featuredAttractions')}
+              href="/de-vizitat"
+              viewAllLabel={t('home.viewAll')}
+              icon={Compass}
+            />
+          </ScrollReveal>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {loadingAttractions
               ? Array.from({ length: 4 }).map((_, i) => (
                   <Skeleton key={i} className="aspect-4/3 rounded-2xl" />
                 ))
-              : featuredAttractions?.slice(0, 4).map((attraction) => (
-                  <AttractionCard key={attraction.id} attraction={attraction} />
+              : featuredAttractions?.slice(0, 4).map((attraction, i) => (
+                  <ScrollReveal key={attraction.id} animation="fade-up" delay={i * 100}>
+                    <AttractionCard attraction={attraction} />
+                  </ScrollReveal>
                 ))}
           </div>
         </div>
       </section>
 
       {/* Ski Slopes CTA */}
-      <section className="relative overflow-hidden bg-primary py-20 mx-4 sm:mx-6 lg:mx-8 rounded-3xl my-10">
-        <div className="absolute inset-0 bg-[url('/images/partia-telegondola.jpg')] bg-cover bg-center opacity-20" />
-        <div className="absolute inset-0 bg-linear-to-r from-primary via-primary/90 to-primary/70" />
-        <div className="relative mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
-          <div className="flex flex-col items-center gap-8 text-center text-white sm:flex-row sm:text-left">
-            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-md shrink-0">
-              <Mountain className="h-10 w-10" />
+      <ScrollReveal animation="scale-in">
+        <section className="relative overflow-hidden bg-primary py-20 mx-4 sm:mx-6 lg:mx-8 rounded-3xl my-10">
+          <div className="absolute inset-0 bg-[url('/images/partia-telegondola.jpg')] bg-cover bg-center opacity-20" />
+          <div className="absolute inset-0 bg-linear-to-r from-primary via-primary/90 to-primary/70" />
+          <div className="relative mx-auto max-w-7xl px-6 sm:px-10 lg:px-14">
+            <div className="flex flex-col items-center gap-8 text-center text-white sm:flex-row sm:text-left">
+              <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-md shrink-0">
+                <Mountain className="h-10 w-10" />
+              </div>
+              <div className="flex-1">
+                <h2 className="font-display text-2xl sm:text-3xl">{t('home.skiCta')}</h2>
+                <p className="mt-3 text-white/75 text-lg leading-relaxed">{t('home.skiCtaDesc')}</p>
+              </div>
+              <Link href="/partia-olimpica">
+                <Button className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-xl px-8 py-6 text-base font-semibold shadow-lg">
+                  {t('home.viewAll')} <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
             </div>
-            <div className="flex-1">
-              <h2 className="font-display text-2xl sm:text-3xl">{t('home.skiCta')}</h2>
-              <p className="mt-3 text-white/75 text-lg leading-relaxed">{t('home.skiCtaDesc')}</p>
-            </div>
-            <Link href="/partia-olimpica">
-              <Button className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-xl px-8 py-6 text-base font-semibold shadow-lg">
-                {t('home.viewAll')} <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
           </div>
-        </div>
-      </section>
+        </section>
+      </ScrollReveal>
     </div>
   );
 }
