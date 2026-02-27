@@ -572,5 +572,10 @@
     "persons": "Number of guests",
     "sendMessage": "Send via WhatsApp",
     "messageTemplate": "Hello! I would like to make a reservation at {{propertyName}}.\n\nCheck-in: {{checkIn}}\nCheck-out: {{checkOut}}\nNumber of guests: {{persons}}\n\nSent via visitborsa.ro"
+  },
+  "pwa": {
+    "installTitle": "Install VisitBorsa",
+    "installDescription": "quick access from your home screen",
+    "install": "Install"
   }
 }

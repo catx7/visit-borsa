@@ -572,5 +572,10 @@
     "persons": "Număr persoane",
     "sendMessage": "Trimite pe WhatsApp",
     "messageTemplate": "Bună ziua! Doresc o rezervare la {{propertyName}}.\n\nCheck-in: {{checkIn}}\nCheck-out: {{checkOut}}\nNumăr persoane: {{persons}}\n\nTrimis prin visitborsa.ro"
+  },
+  "pwa": {
+    "installTitle": "Instalează VisitBorsa",
+    "installDescription": "acces rapid de pe ecranul telefonului",
+    "install": "Instalează"
   }
 }

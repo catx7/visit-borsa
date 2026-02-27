@@ -3,6 +3,7 @@ import { Inter, DM_Serif_Display } from 'next/font/google';
 import { Providers } from '@/components/providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { InstallPrompt } from '@/components/pwa/install-prompt';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -59,6 +60,7 @@ export default function RootLayout({
         <Providers>
           <div className="flex min-h-screen flex-col">
             <Header />
+            <InstallPrompt />
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
