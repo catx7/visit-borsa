@@ -122,7 +122,7 @@ export default function HomePage() {
             <h1 className="font-display text-4xl text-white sm:text-5xl lg:text-7xl drop-shadow-lg">
               {t('home.hero.title')}
             </h1>
-            <p className="mt-6 text-lg text-white/85 sm:text-xl leading-relaxed">
+            <p className="mt-6 text-lg text-white sm:text-xl leading-relaxed drop-shadow-md">
               {t('home.hero.subtitle')}
             </p>
             <form onSubmit={handleSearch} className="mt-10 flex gap-3 sm:mx-auto sm:max-w-lg">

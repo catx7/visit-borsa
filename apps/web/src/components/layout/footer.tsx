@@ -15,7 +15,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-3">
-              <Image src="/images/logo.png" alt={t('site.name')} width={40} height={40} className="rounded-xl" />
+              <Image src="/images/logo.png" alt={t('site.name')} width={56} height={56} className="rounded-xl" />
               <span className="font-display text-xl tracking-tight">{t('site.name')}</span>
             </div>
             <p className="mt-4 text-sm text-white/70 leading-relaxed">
