@@ -40,7 +40,6 @@ export const SERVICE_CATEGORY_LABELS = {
     HIKING: 'Drumeții',
     SKIING: 'Schi',
     BICYCLE_RENTAL: 'Închiriere biciclete',
-    RAFTING: 'Rafting',
     OTHER: 'Altele',
   },
   en: {
@@ -50,7 +49,6 @@ export const SERVICE_CATEGORY_LABELS = {
     HIKING: 'Hiking',
     SKIING: 'Skiing',
     BICYCLE_RENTAL: 'Bicycle Rental',
-    RAFTING: 'Rafting',
     OTHER: 'Other',
   },
 } as const;

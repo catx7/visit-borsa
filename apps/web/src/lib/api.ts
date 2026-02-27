@@ -194,7 +194,7 @@ export function deleteProperty(token: string, id: string) {
 // --- Services ---
 export interface ServiceDto {
   id: string;
-  category: 'ATV' | 'SNOWMOBILE' | 'HORSEBACK_RIDING' | 'HIKING' | 'SKIING' | 'BICYCLE_RENTAL' | 'RAFTING' | 'OTHER';
+  category: 'ATV' | 'SNOWMOBILE' | 'HORSEBACK_RIDING' | 'HIKING' | 'SKIING' | 'BICYCLE_RENTAL' | 'OTHER';
   titleRo: string;
   titleEn: string;
   descriptionRo: string;

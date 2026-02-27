@@ -651,24 +651,6 @@ async function main() {
         latitude: 47.654,
         longitude: 24.665,
       },
-      // RAFTING
-      {
-        category: 'RAFTING',
-        titleRo: 'Rafting pe Bistrita Aurie',
-        titleEn: 'Rafting on Bistrita Aurie',
-        descriptionRo: 'Aventura pe apa pe raul Bistrita Aurie. Trasee de 2-4 ore, echipament complet inclus, ghid experimentat.',
-        descriptionEn: 'Water adventure on the Bistrita Aurie River. 2-4 hour routes, full equipment included, experienced guide.',
-        phone: '+40741666222',
-        address: 'Malul Bistritei, Borsa',
-        priceInfo: 'De la 120 RON/persoana',
-        ownerId: vasile.id,
-        status: 'APPROVED',
-        images: [
-          'https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=800&h=600&fit=crop',
-        ],
-        latitude: 47.653,
-        longitude: 24.663,
-      },
       // TAXI_LOCAL
       {
         category: 'TAXI_LOCAL',

@@ -35,7 +35,6 @@ enum ServiceCategory {
   HIKING
   SKIING
   BICYCLE_RENTAL
-  RAFTING
   TAXI_LOCAL
   RENT_A_CAR
   FOTOGRAF

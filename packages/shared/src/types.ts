@@ -26,7 +26,6 @@ export enum ServiceCategory {
   HIKING = 'HIKING',
   SKIING = 'SKIING',
   BICYCLE_RENTAL = 'BICYCLE_RENTAL',
-  RAFTING = 'RAFTING',
   OTHER = 'OTHER',
 }
 

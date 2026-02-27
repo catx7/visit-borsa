@@ -35,7 +35,6 @@ const CATEGORY_CONFIG: Record<string, { icon: typeof Tag; color: string }> = {
   HIKING: { icon: Mountain, color: 'bg-emerald-500/90 text-white' },
   SKIING: { icon: PersonStanding, color: 'bg-blue-500/90 text-white' },
   BICYCLE_RENTAL: { icon: Bike, color: 'bg-lime-500/90 text-white' },
-  RAFTING: { icon: Sparkles, color: 'bg-teal-500/90 text-white' },
   TAXI_LOCAL: { icon: Car, color: 'bg-yellow-500/90 text-white' },
   RENT_A_CAR: { icon: Car, color: 'bg-indigo-500/90 text-white' },
   FOTOGRAF: { icon: Camera, color: 'bg-pink-500/90 text-white' },
