@@ -1,9 +1,9 @@
 'use client';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useState, type ReactNode } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
 import { AuthProvider } from '@/lib/auth-context';
-import '@/lib/i18n';
+import i18n from '@/lib/i18n';
 
 export function Providers({ children }: { children: ReactNode }) {
   const [queryClient] = useState(
@@ -17,6 +17,14 @@ export function Providers({ children }: { children: ReactNode }) {
         },
       }),
   );
+
+  // Restore stored language preference after hydration to avoid mismatch
+  useEffect(() => {
+    const stored = localStorage.getItem('i18nextLng');
+    if (stored && stored !== i18n.language && (stored === 'ro' || stored === 'en')) {
+      i18n.changeLanguage(stored);
+    }
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

@@ -184,11 +184,11 @@
     "geography": "Geografie",
     "geographyText": "Așezat la altitudinea de aproximativ 700m, în extremitatea estică a județului Maramureș, Borșa se află la baza Masivului Rodna, lângă Pasul Prislop. Orașul servește ca poartă de intrare între Depresiunea Maramureșului și valea Bistriței Aurii. Munții Rodnei — cel mai înalt masiv muntos din nordul României, cu Vârful Pietrosul la 2.303m — oferă un decor natural spectaculos. Parcul Național Munții Rodnei, Rezervație a Biosferei UNESCO, protejează o biodiversitate remarcabilă.",
     "nature": "Natură și Turism",
-    "natureText": "Borșa este o destinație pentru toate anotimpurile. Iarna, cele trei pârtii de schi — Olimpică, Cascada Cailor și Prislop — atrag mii de schiori, alături de activități ca snowmobilul și plimbările cu sania. Vara, drumeții și iubitori ai naturii explorează traseele montane către Cascada Cailor (cea mai înaltă cascadă din România, ~95m), lacurile glaciare Iezer și Știol, sau vârful Pietrosul Rodnei. Zona oferă și ATV, călărie și ciclism montan. Stațiunea găzduiește 5.000-7.000 de schiori în sezonul de iarnă.",
+    "natureText": "Borșa este o destinație pentru toate anotimpurile. Iarna, cele trei pârtii de schi — Olimpică, Cascada Cailor și Prislop — atrag mii de schiori, alături de activități ca snowmobilul și plimbările cu sania. Vara, drumeții și iubitori ai naturii explorează traseele montane către Cascada Cailor (cea mai înaltă cascadă din România, ~95m), lacurile glaciare Iezer și Știol, sau vârful Pietrosul Rodnei. Zona oferă și ATV, călărie și ciclism montan.",
     "traditions": "Tradiții și Cultură",
-    "traditionsText": "Maramureșul este renumit mondial pentru tradițiile sale autentice, iar Borșa le păstrează cu mândrie. Portul popular maramureșean, cu ii brodate și opinci, se poartă încă la sărbători. Bisericile de lemn, monumente UNESCO, reprezintă capodopere ale arhitecturii tradiționale. Meșteșugurile locale — sculptură în lemn, țesut, prelucrarea lânii — continuă să fie practicate. Serbările Zăpezii, festival anual în luna februarie, celebrează iarna cu concursuri de schi, muzică populară și gastronomie tradițională. Porțile maramureșene din lemn sculptat sunt simbolul ospitalității locale.",
+    "traditionsText": "Maramureșul este renumit mondial pentru tradițiile sale autentice, iar Borșa le păstrează cu mândrie. Portul popular maramureșean, cu ii brodate și opinci, se poartă încă la sărbători. Bisericile de lemn, monumente UNESCO, reprezintă capodopere ale arhitecturii tradiționale. Meșteșugurile locale — sculptură în lemn, țesut, prelucrarea lânii — continuă să fie practicate. Winter Tour, festival anual în luna februarie, celebrează iarna cu concursuri de schi, muzică populară și gastronomie tradițională. Porțile maramureșene din lemn sculptat sunt simbolul ospitalității locale.",
     "landmarks": "Repere spirituale",
-    "landmarksText": "Zona Borșa este bogată în lăcașuri de cult cu valoare istorică și spirituală. Mânăstirea Moisei, fondată în 1599, este unul dintre cele mai vechi așezăminte monastice din regiune. Biserica de Lemn \"Sfinții Arhangheli Mihail și Gavril\", construită în 1700 și reconstruită după invazia tătară din 1717, este monument istoric cu picturi interioare impresionante. Schitul Pietroasa, situat la 1.000m altitudine, oferă o retragere spirituală într-un cadru natural spectaculos. Monumentul Eroilor de la Moisei comemorează cele 29 de victime ale masacrului din 1944.",
+    "landmarksText": "Zona Borșa este bogată în lăcașuri de cult cu valoare istorică și spirituală. Mânăstirea Moisei, fondată în 1599, este unul dintre cele mai vechi așezăminte monastice din regiune. Biserica de Lemn \"Sfinții Arhangheli Mihail și Gavril\", construită în 1700 și reconstruită după invazia tătară din 1717, este monument istoric cu picturi interioare impresionante. Schitul Pietroasa, situat la 1.000m altitudine, oferă o retragere spirituală într-un cadru natural spectaculos.",
     "statsAltitude": "~700m altitudine",
     "statsPopulation": "~28.000 locuitori",
     "statsSurface": "Poartă spre Munții Rodnei"
@@ -354,7 +354,7 @@
       "cazari": "Cazări",
       "servicii": "Servicii",
       "restaurante": "Restaurante",
-      "deVizitat": "De Vizitat",
+      "deVizitat": "Atracții",
       "promovate": "Promovate",
       "utilizatori": "Utilizatori"
     },

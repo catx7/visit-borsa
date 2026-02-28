@@ -107,6 +107,11 @@ export default function HomePage() {
         name: 'VisitBorșa',
         url: 'https://visitborsa.ro',
         description: 'Platformă turistică pentru Borșa, Maramureș',
+        sameAs: [
+          'https://www.facebook.com/visitborsa',
+          'https://www.instagram.com/visitborsa.ro',
+          'https://www.tiktok.com/@visit_borsa',
+        ],
         areaServed: {
           '@type': 'City',
           name: 'Borșa',
