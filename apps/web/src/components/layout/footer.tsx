@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { MapPin, Mail, Mountain } from 'lucide-react';
 
 export function Footer() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const year = new Date().getFullYear();
 
   return (
@@ -65,12 +65,12 @@ export function Footer() {
           </div>
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white/90">
-              {i18n?.language === 'ro' ? 'Iarnă activă' : 'Active Winter'}
+              {t('footer.activeWinter')}
             </h3>
             <div className="mt-4 rounded-xl bg-white/10 p-4">
               <div className="flex items-center gap-2 mb-3">
                 <Mountain className="h-5 w-5 text-white/80" />
-                <span className="text-sm font-medium">3 {i18n?.language === 'ro' ? 'pârtii de schi' : 'ski slopes'}</span>
+                <span className="text-sm font-medium">3 {t('footer.skiSlopes')}</span>
               </div>
               <ul className="space-y-1.5 text-sm text-white/60">
                 <li>Pârtia Olimpică</li>

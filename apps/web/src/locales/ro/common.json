@@ -546,7 +546,9 @@
     "cazari": "Cazări",
     "servicii": "Servicii",
     "restaurante": "Restaurante",
-    "explore": "Explorează"
+    "explore": "Explorează",
+    "activeWinter": "Iarnă activă",
+    "skiSlopes": "pârtii de schi"
   },
   "sort": {
     "default": "Sortare: Implicit",

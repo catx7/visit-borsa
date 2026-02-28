@@ -546,7 +546,9 @@
     "cazari": "Accommodation",
     "servicii": "Services",
     "restaurante": "Restaurants",
-    "explore": "Explore"
+    "explore": "Explore",
+    "activeWinter": "Active Winter",
+    "skiSlopes": "ski slopes"
   },
   "sort": {
     "default": "Sort: Default",
