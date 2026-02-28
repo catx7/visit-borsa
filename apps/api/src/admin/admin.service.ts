@@ -1,5 +1,6 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { UploadService } from '../upload/upload.service';
 import { UpdatePropertyStatusDto } from './dto/update-property-status.dto';
 import { UpdateUserRoleDto } from './dto/update-user-role.dto';
 import { FilterPropertyDto } from '../properties/dto/filter-property.dto';
@@ -10,7 +11,10 @@ import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class AdminService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly uploadService: UploadService,
+  ) {}
 
   async getStats() {
     const [
@@ -108,6 +112,7 @@ export class AdminService {
       throw new NotFoundException('Property not found');
     }
     await this.prisma.property.delete({ where: { id } });
+    this.uploadService.deleteImages(property.images).catch(() => {});
     return { message: 'Property deleted' };
   }
 
@@ -160,6 +165,7 @@ export class AdminService {
       throw new NotFoundException('Service not found');
     }
     await this.prisma.service.delete({ where: { id } });
+    this.uploadService.deleteImages(service.images).catch(() => {});
     return { message: 'Service deleted' };
   }
 
@@ -212,6 +218,7 @@ export class AdminService {
       throw new NotFoundException('Restaurant not found');
     }
     await this.prisma.restaurant.delete({ where: { id } });
+    this.uploadService.deleteImages(restaurant.images).catch(() => {});
     return { message: 'Restaurant deleted' };
   }
 
@@ -269,7 +276,21 @@ export class AdminService {
     if (!user) {
       throw new NotFoundException('User not found');
     }
+
+    // Collect all images before cascade delete removes the entities
+    const [properties, services, restaurants] = await Promise.all([
+      this.prisma.property.findMany({ where: { ownerId: id }, select: { images: true } }),
+      this.prisma.service.findMany({ where: { ownerId: id }, select: { images: true } }),
+      this.prisma.restaurant.findMany({ where: { ownerId: id }, select: { images: true } }),
+    ]);
+    const allImages = [
+      ...properties.flatMap((p) => p.images),
+      ...services.flatMap((s) => s.images),
+      ...restaurants.flatMap((r) => r.images),
+    ];
+
     await this.prisma.user.delete({ where: { id } });
+    this.uploadService.deleteImages(allImages).catch(() => {});
     return { message: 'User deleted' };
   }
 
@@ -295,6 +316,7 @@ export class AdminService {
       throw new NotFoundException('Attraction not found');
     }
     await this.prisma.touristAttraction.delete({ where: { id } });
+    this.uploadService.deleteImages(attraction.images).catch(() => {});
     return { message: 'Attraction deleted' };
   }
 

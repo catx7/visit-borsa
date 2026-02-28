@@ -47,6 +47,32 @@ export class UploadService {
     return this.uploadToLocal(file);
   }
 
+  async deleteImages(imageUrls: string[]): Promise<void> {
+    if (!this.useCloudinary || !imageUrls || imageUrls.length === 0) return;
+
+    const publicIds = imageUrls
+      .map((url) => this.extractPublicId(url))
+      .filter((id): id is string => !!id);
+
+    if (publicIds.length === 0) return;
+
+    const results = await Promise.allSettled(
+      publicIds.map((id) => cloudinary.uploader.destroy(id)),
+    );
+
+    for (let i = 0; i < results.length; i++) {
+      const result = results[i];
+      if (result.status === 'rejected') {
+        this.logger.warn(`Failed to delete Cloudinary image ${publicIds[i]}: ${result.reason}`);
+      }
+    }
+  }
+
+  private extractPublicId(url: string): string | null {
+    const match = url.match(/\/upload\/v\d+\/(.+)\.\w+$/);
+    return match ? match[1] : null;
+  }
+
   async uploadMultiple(files: Express.Multer.File[]): Promise<string[]> {
     if (!files || files.length === 0) {
       throw new BadRequestException('No files provided');

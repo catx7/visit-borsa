@@ -6,13 +6,17 @@ import {
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import { UploadService } from '../upload/upload.service';
 import { CreateServiceDto } from './dto/create-service.dto';
 import { FilterServiceDto } from './dto/filter-service.dto';
 import { UpdateServiceDto } from './dto/update-service.dto';
 
 @Injectable()
 export class ServicesService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly uploadService: UploadService,
+  ) {}
 
   async findAll(filter: FilterServiceDto) {
     const where: Prisma.ServiceWhereInput = {};
@@ -156,6 +160,7 @@ export class ServicesService {
       throw new ForbiddenException('You can only delete your own services');
     }
     await this.prisma.service.delete({ where: { id } });
+    this.uploadService.deleteImages(service.images).catch(() => {});
     return { message: 'Service deleted' };
   }
 

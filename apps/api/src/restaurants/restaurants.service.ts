@@ -6,13 +6,17 @@ import {
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import { UploadService } from '../upload/upload.service';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 import { FilterRestaurantDto } from './dto/filter-restaurant.dto';
 import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
 
 @Injectable()
 export class RestaurantsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly uploadService: UploadService,
+  ) {}
 
   async findAll(filter: FilterRestaurantDto) {
     const where: Prisma.RestaurantWhereInput = {};
@@ -162,6 +166,7 @@ export class RestaurantsService {
       throw new ForbiddenException('You can only delete your own restaurants');
     }
     await this.prisma.restaurant.delete({ where: { id } });
+    this.uploadService.deleteImages(restaurant.images).catch(() => {});
     return { message: 'Restaurant deleted' };
   }
 

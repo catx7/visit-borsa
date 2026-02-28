@@ -6,13 +6,17 @@ import {
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import { UploadService } from '../upload/upload.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { FilterPropertyDto } from './dto/filter-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
 
 @Injectable()
 export class PropertiesService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly uploadService: UploadService,
+  ) {}
 
   async findAll(filter: FilterPropertyDto) {
     const where: Prisma.PropertyWhereInput = {};
@@ -169,6 +173,7 @@ export class PropertiesService {
       throw new ForbiddenException('You can only delete your own properties');
     }
     await this.prisma.property.delete({ where: { id } });
+    this.uploadService.deleteImages(property.images).catch(() => {});
     return { message: 'Property deleted' };
   }
 
